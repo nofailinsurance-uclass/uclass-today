@@ -1,0 +1,155 @@
+<!-- section-case.html — 보험 보상 사례 브리핑 스니펫 구조 참조 (화/금)
+     base.html의 {{SECTION_CATEGORY}} 위치에 삽입.
+     section 태그부터 포함하여 출력한다.
+     Claude는 이 구조에 맞춰 사례 1건 + 고객 응대 스크립트를 HTML로 출력한다.
+-->
+
+  <section class="nfd-brief-sec nfd-brief-sec--gray" id="section-news">
+    <div class="nfd-brief-sec-container">
+      <div class="nfd-brief-sec-header">
+        <p class="nfd-brief-sec-subtitle">이런 경우, 보험금 나올까요?</p>
+        <h2 class="nfd-brief-sec-title">⚖️ 보험 보상 사례 <span class="nfd-brief-accent">브리핑</span></h2>
+      </div>
+
+      <div class="nfd-brief-cases">
+
+        <!-- 배지 + 주제 -->
+        <div style="text-align:center; margin-bottom:28px;">
+          <span class="nfd-brief-case-badge">Vol.{N}</span>
+          <p style="font-size:18px; font-weight:600; color:#0025B4; margin-top:20px; line-height:1.5em; word-break:keep-all;">{사례 주제 키워드 — 부제}</p>
+        </div>
+
+        <!-- 사건 요약 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">사건 요약</p>
+            <p class="nfd-brief-script-q">{사건 요약 한 줄 헤드라인}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{사건 요약 3~4줄}</p>
+          </div>
+        </div>
+
+        <!-- 쟁점 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">쟁점</p>
+            <p class="nfd-brief-script-q">{쟁점 한 줄 헤드라인}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <div class="nfd-brief-case-dispute">
+              <div class="nfd-brief-case-dispute-item nfd-brief-case-dispute-item--insurer">
+                <span class="nfd-brief-case-dispute-tag">보험사 측</span>
+                <p class="nfd-brief-case-dispute-text">{보험사 논리 2~3줄}</p>
+              </div>
+              <div class="nfd-brief-case-dispute-item nfd-brief-case-dispute-item--customer">
+                <span class="nfd-brief-case-dispute-tag">고객 측</span>
+                <p class="nfd-brief-case-dispute-text">{고객 논리 2~3줄}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 결과 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">결과</p>
+            <p class="nfd-brief-script-q">{결과 한 줄 헤드라인}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{결과 2~3줄}</p>
+          </div>
+        </div>
+
+        <!-- 왜 이렇게 됐나 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">왜 이렇게 됐나</p>
+            <p class="nfd-brief-script-q">{핵심 논리 한 줄}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{법적·약관적 근거 4~6줄}</p>
+          </div>
+        </div>
+
+        <!-- 설계사 포인트 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">설계사가 알아둬야 할 포인트</p>
+            <p class="nfd-brief-script-q">{포인트 요약 한 줄}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">
+              <strong>① {포인트1 제목}.</strong> {설명 1~2줄}<br><br>
+              <strong>② {포인트2 제목}.</strong> {설명 1~2줄}<br><br>
+              <strong>③ {포인트3 제목}.</strong> {설명 1~2줄}
+            </p>
+          </div>
+        </div>
+
+        <!-- 핵심 요약 + 출처 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">핵심 요약</p>
+            <p class="nfd-brief-script-q">{핵심 한 줄}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{핵심 요약 2~3줄}</p>
+            <div class="nfd-brief-case-sources" style="margin-top:20px;">
+              <p class="nfd-brief-case-sources-label">출처</p>
+              <ul class="nfd-brief-case-sources-list">
+                <li><a href="{URL1}" target="_blank" rel="noopener">{매체명1} — {기사 제목1}</a></li>
+                <li><a href="{URL2}" target="_blank" rel="noopener">{매체명2} — {기사 제목2}</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 고객 응대 스크립트 -->
+      <div class="nfd-brief-sec-header" style="margin-top:60px !important;">
+        <p class="nfd-brief-sec-subtitle">현장에서 바로 쓸 수 있는</p>
+        <h2 class="nfd-brief-sec-title">🎯 고객에게 이렇게 <span class="nfd-brief-accent">말해주세요</span></h2>
+      </div>
+
+      <div class="nfd-brief-scripts">
+
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">{스크립트1 상황}</p>
+            <p class="nfd-brief-script-q">{스크립트1 질문}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <span class="nfd-brief-script-tag">{스크립트1 태그}</span>
+            <p class="nfd-brief-script-text" data-copy-id="case-script1">{멘트 본문}</p>
+          </div>
+          <div class="nfd-brief-script-footer">
+            <button class="nfd-brief-copy-btn" data-copy-target="case-script1">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              복사하기
+            </button>
+          </div>
+        </div>
+
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">{스크립트2 상황}</p>
+            <p class="nfd-brief-script-q">{스크립트2 질문}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <span class="nfd-brief-script-tag">{스크립트2 태그}</span>
+            <p class="nfd-brief-script-text" data-copy-id="case-script2">{멘트 본문}</p>
+          </div>
+          <div class="nfd-brief-script-footer">
+            <button class="nfd-brief-copy-btn" data-copy-target="case-script2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              복사하기
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>

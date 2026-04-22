@@ -1,0 +1,62 @@
+<!-- section-news.html — 보험업계 뉴스 TOP3 스니펫 구조 참조 (월요일)
+     base.html의 {{SECTION_CATEGORY}} 위치에 삽입.
+     section 태그부터 포함하여 출력한다.
+-->
+
+  <section class="nfd-brief-sec nfd-brief-sec--gray" id="section-news">
+    <div class="nfd-brief-sec-container">
+      <div class="nfd-brief-sec-header">
+        <p class="nfd-brief-sec-subtitle">{M}월 {N}주차 · 상담에 바로 쓰는 업계 정보</p>
+        <h2 class="nfd-brief-sec-title">📰 보험업계 뉴스 <span class="nfd-brief-accent">TOP 3</span></h2>
+      </div>
+
+      <div class="nfd-brief-news">
+
+        <!-- 뉴스 1 -->
+        <div class="nfd-brief-news-item">
+          <div class="nfd-brief-news-top">
+            <span class="nfd-brief-news-badge">TOP 1</span>
+            <p class="nfd-brief-news-top-title">{뉴스 1 제목}</p>
+          </div>
+          <div class="nfd-brief-news-body">
+            <p class="nfd-brief-news-desc">{뉴스 1 본문 3~5줄. <strong>핵심 수치·시점·제도명</strong> 볼드}</p>
+            <div class="nfd-brief-news-point">
+              💬 <strong>상담 포인트:</strong> {상담 활용법 1~2줄}
+            </div>
+            <p class="nfd-brief-news-source">출처: <a href="{URL}" target="_blank">{매체명} — {기사 제목}</a></p>
+          </div>
+        </div>
+
+        <!-- 뉴스 2 -->
+        <div class="nfd-brief-news-item">
+          <div class="nfd-brief-news-top">
+            <span class="nfd-brief-news-badge">TOP 2</span>
+            <p class="nfd-brief-news-top-title">{뉴스 2 제목}</p>
+          </div>
+          <div class="nfd-brief-news-body">
+            <p class="nfd-brief-news-desc">{뉴스 2 본문}</p>
+            <div class="nfd-brief-news-point">
+              💼 <strong>설계사에게 의미:</strong> {실무 영향 1~2줄}
+            </div>
+            <p class="nfd-brief-news-source">출처: <a href="{URL}" target="_blank">{매체명} — {기사 제목}</a></p>
+          </div>
+        </div>
+
+        <!-- 뉴스 3 -->
+        <div class="nfd-brief-news-item">
+          <div class="nfd-brief-news-top">
+            <span class="nfd-brief-news-badge">TOP 3</span>
+            <p class="nfd-brief-news-top-title">{뉴스 3 제목}</p>
+          </div>
+          <div class="nfd-brief-news-body">
+            <p class="nfd-brief-news-desc">{뉴스 3 본문}</p>
+            <div class="nfd-brief-news-point">
+              💬 <strong>상담 포인트:</strong> {상담 활용법}
+            </div>
+            <p class="nfd-brief-news-source">출처: <a href="{URL}" target="_blank">{매체명} — {기사 제목}</a></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,104 @@
+<!-- section-job.html — 직업별 공감 포인트 스니펫 구조 참조 (수/토)
+     base.html의 {{SECTION_CATEGORY}} 위치에 삽입.
+     section 태그부터 포함하여 출력한다.
+     Claude는 이 구조에 맞춰 직업별 공감 콘텐츠를 HTML로 출력한다.
+-->
+
+  <section class="nfd-brief-sec nfd-brief-sec--gray" id="section-news">
+    <div class="nfd-brief-sec-container">
+      <div class="nfd-brief-sec-header">
+        <p class="nfd-brief-sec-subtitle">첫 미팅 아이스브레이킹이 달라집니다</p>
+        <h2 class="nfd-brief-sec-title">👥 직업별 공감 <span class="nfd-brief-accent">포인트</span></h2>
+        <p class="nfd-brief-sec-topic">{직업명} — 이 직업을 이해하면 마음의 문이 열립니다</p>
+      </div>
+
+      <div class="nfd-brief-scripts">
+
+        <!-- 하루 루틴 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">하루 루틴</p>
+            <p class="nfd-brief-script-q">{루틴 한 줄 요약}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{하루 일과 설명}</p>
+          </div>
+        </div>
+
+        <!-- 수입 구조 -->
+        <div class="nfd-brief-script" style="margin-top:20px !important;">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">수입 구조</p>
+            <p class="nfd-brief-script-q">{수입 특징 한 줄}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{연봉·수입 구조·변동폭 설명}</p>
+          </div>
+        </div>
+
+        <!-- 진짜 힘든 것들 -->
+        <div class="nfd-brief-script" style="margin-top:20px !important;">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">이 직업이 진짜 힘든 것들</p>
+            <p class="nfd-brief-script-q">{고충 한 줄}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{고충 ①②③④ 각각 설명}</p>
+          </div>
+        </div>
+
+        <!-- 최근 이슈 -->
+        <div class="nfd-brief-script" style="margin-top:20px !important;">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">최근 이슈</p>
+            <p class="nfd-brief-script-q">{업계 이슈 한 줄}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{최근 트렌드·이슈 + 상담 진입 포인트}</p>
+          </div>
+        </div>
+
+        <!-- 공감 포인트 -->
+        <div class="nfd-brief-script" style="margin-top:20px !important;">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">고객이 들으면 마음이 열리는 공감 포인트</p>
+            <p class="nfd-brief-script-q">다른 직군과 확실히 차별화되는 말 5가지</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{공감 멘트 ①②③④⑤ 각각 멘트 + 왜 통하는지}</p>
+          </div>
+        </div>
+
+        <!-- 절대 하면 안 되는 말 -->
+        <div class="nfd-brief-script" style="margin-top:20px !important;">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">절대 하면 안 되는 말</p>
+            <p class="nfd-brief-script-q">이 말 한마디에 마음의 문이 닫힙니다</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <div class="nfd-brief-case-dispute" style="gap:12px !important;">
+              <div class="nfd-brief-case-dispute-item nfd-brief-case-dispute-item--insurer">
+                <span class="nfd-brief-case-dispute-tag">❌ 금지</span>
+                <p class="nfd-brief-case-dispute-text"><strong>"{금지 멘트 1}"</strong><br>→ {왜 안 되는지}</p>
+              </div>
+              <div class="nfd-brief-case-dispute-item nfd-brief-case-dispute-item--insurer">
+                <span class="nfd-brief-case-dispute-tag">❌ 금지</span>
+                <p class="nfd-brief-case-dispute-text"><strong>"{금지 멘트 2}"</strong><br>→ {왜 안 되는지}</p>
+              </div>
+              <div class="nfd-brief-case-dispute-item nfd-brief-case-dispute-item--insurer">
+                <span class="nfd-brief-case-dispute-tag">❌ 금지</span>
+                <p class="nfd-brief-case-dispute-text"><strong>"{금지 멘트 3}"</strong><br>→ {왜 안 되는지}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 한 줄 정리 -->
+        <div class="nfd-brief-summary-card" style="margin-top:20px !important;">
+          <p class="nfd-brief-summary-title">💡 미팅 전 이것만 기억하세요</p>
+          <p style="font-size:17px !important; font-weight:500 !important; color:#363636 !important; line-height:1.8em !important; word-break:keep-all !important;"><strong>"{핵심 공감 한마디}"</strong><br>{왜 이 한마디가 통하는지 2~3줄}</p>
+        </div>
+
+      </div>
+    </div>
+  </section>

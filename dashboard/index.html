@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UCLASS TODAY — 대시보드</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue: #0025B4;
+  --blue-light: #EEF1FF;
+  --blue-mid: #3a52d4;
+  --gray-bg: #f4f6fb;
+  --gray-border: #e4e8f0;
+  --gray-text: #888;
+  --text: #1a1a1a;
+  --white: #fff;
+  --shadow: 0 2px 12px rgba(0,37,180,0.07);
+  --shadow-hover: 0 8px 28px rgba(0,37,180,0.13);
+}
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+  background: #fff;
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 헤더 ===== */
+.db-header {
+  background: var(--blue);
+  padding: 0;
+}
+
+.db-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.db-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.db-logo-badge {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 50px;
+  letter-spacing: 0.08em;
+}
+
+.db-logo-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.db-logo-sub {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  margin-top: 2px;
+}
+
+/* ===== 월 네비게이션 ===== */
+.db-nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 32px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.db-month-label {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.db-month-label span {
+  color: var(--blue);
+}
+
+.db-nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.db-nav-btn {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--gray-border);
+  background: var(--white);
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-size: 16px;
+  transition: all 0.15s ease;
+}
+
+.db-nav-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-light);
+}
+
+.db-today-btn {
+  height: 40px;
+  padding: 0 18px;
+  border: 1.5px solid var(--blue);
+  background: var(--blue-light);
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.db-today-btn:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* ===== 요일 헤더 ===== */
+.db-weekdays {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.db-weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-text);
+  padding: 8px 0;
+  letter-spacing: 0.04em;
+}
+
+.db-weekday.sun { color: #e63946; }
+.db-weekday.sat { color: var(--blue); }
+
+/* ===== 달력 그리드 ===== */
+.db-calendar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px 40px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+/* ===== 날짜 셀 ===== */
+.db-cell {
+  background: var(--white);
+  border-radius: 12px;
+  border: 1.5px solid var(--gray-border);
+  min-height: 160px;
+  padding: 0;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.db-cell:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: #c5cff5;
+  transform: translateY(-2px);
+}
+
+.db-cell.empty {
+  background: transparent;
+  border-color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+
+.db-cell.empty:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.db-cell.today {
+  border-color: var(--blue);
+  border-width: 2px;
+}
+
+.db-cell.today .db-cell-date {
+  background: var(--blue);
+  color: #fff;
+}
+
+.db-cell.past {
+  opacity: 0.55;
+}
+
+.db-cell.future {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+  background: #f8f9fc;
+}
+
+/* 날짜 숫자 */
+.db-cell-date {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  border-radius: 8px;
+  margin: 10px 10px 8px;
+  flex-shrink: 0;
+}
+
+.db-cell.sunday .db-cell-date { color: #e63946; }
+.db-cell.saturday .db-cell-date { color: var(--blue); }
+
+/* 콘텐츠 태그들 */
+.db-cell-tags {
+  padding: 0 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.db-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 5px;
+  line-height: 1.4em;
+  display: block;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.db-tag.hot    { background: #fff0f0; color: #c0392b; }
+.db-tag.news   { background: #e8ecff; color: var(--blue); }
+.db-tag.case   { background: #fff8e8; color: #b07d10; }
+.db-tag.skill  { background: #f0f9f0; color: #1a6b2a; }
+.db-tag.job    { background: #f5f0ff; color: #6b3fc0; }
+.db-tag.touch  { background: #fff0f8; color: #a0277a; }
+
+/* 오늘 표시 */
+.db-cell.today::after {
+  content: '오늘';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--blue);
+  background: var(--blue-light);
+  padding: 2px 7px;
+  border-radius: 50px;
+}
+
+/* ===== 범례 ===== */
+.db-legend {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.db-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-text);
+}
+
+.db-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+/* ===== 모달 ===== */
+.db-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.45);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.db-modal-overlay.active { display: flex; }
+
+.db-modal {
+  background: #fff;
+  border-radius: 18px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  overflow: hidden;
+  animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.db-modal-head {
+  background: var(--blue);
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.db-modal-date-nav {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px 16px;
+  gap: 10px;
+}
+
+.db-modal-date-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  border: 1.5px solid #c5cff5;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.db-modal-date-nav-btn:hover {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+
+.db-modal-date-nav-btn:hover svg { stroke: #fff; }
+
+.db-modal-date-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+  .db-modal-date-nav { display: flex; }
+}
+
+.db-modal-date {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.db-modal-day {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  margin-top: 3px;
+}
+
+.db-modal-close {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.db-modal-close:hover { background: rgba(255,255,255,0.3); }
+
+.db-modal-body {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.db-modal-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--gray-border);
+}
+
+.db-modal-item-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--gray-text);
+}
+
+.db-modal-item-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5em;
+  word-break: keep-all;
+}
+
+.db-modal-item.hot    { background: #fff8f8; border-color: #fecaca; }
+.db-modal-item.hot .db-modal-item-label { color: #c0392b; }
+.db-modal-item.news   { background: #f0f3ff; border-color: #c5cff5; }
+.db-modal-item.news .db-modal-item-label { color: var(--blue); }
+.db-modal-item.case   { background: #fffbf0; border-color: #fde68a; }
+.db-modal-item.case .db-modal-item-label { color: #b07d10; }
+.db-modal-item.skill  { background: #f3fbf3; border-color: #bbf7d0; }
+.db-modal-item.skill .db-modal-item-label { color: #1a6b2a; }
+.db-modal-item.job    { background: #f8f4ff; border-color: #ddd6fe; }
+.db-modal-item.job .db-modal-item-label { color: #6b3fc0; }
+.db-modal-item.touch  { background: #fff4fb; border-color: #fbcfe8; }
+.db-modal-item.touch .db-modal-item-label { color: #a0277a; }
+
+.db-modal-foot {
+  padding: 0 24px 24px;
+}
+
+.db-modal-view-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.db-modal-view-btn:hover { opacity: 0.85; }
+
+.db-modal-view-btn svg { flex-shrink: 0; }
+
+.db-modal-no-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 14px 24px;
+  background: #f4f6fb;
+  color: var(--gray-text);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  border: 1.5px dashed var(--gray-border);
+  border-radius: 12px;
+  cursor: default;
+}
+
+/* ===== 빈 상태 ===== */
+.db-modal-empty {
+  text-align: center;
+  padding: 20px 0 10px;
+  color: var(--gray-text);
+  font-size: 14px;
+}
+
+/* ===== 모바일 ===== */
+@media screen and (max-width: 900px) {
+  .db-header-inner, .db-nav, .db-weekdays, .db-calendar, .db-legend {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .db-month-label { font-size: 22px; }
+  .db-cell { min-height: 80px; }
+  .db-cell-date { width: 24px; height: 24px; font-size: 12px; margin: 7px 7px 5px; }
+  .db-cell-tags { padding: 0 5px 7px; gap: 3px; }
+  .db-tag { font-size: 9px; padding: 2px 5px; }
+  .db-cell.today::after { display: none; }
+}
+
+@media screen and (max-width: 600px) {
+  .db-cell { min-height: 60px; border-radius: 8px; }
+  .db-cell-date { width: 22px; height: 22px; font-size: 11px; margin: 5px 5px 4px; }
+  .db-tag { display: none; }
+  .db-cell-tags .db-tag:first-child { display: block; }
+  .db-legend { gap: 10px; }
+  .db-legend-item { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 월 네비게이션 -->
+<div class="db-nav">
+  <div class="db-month-label" id="monthLabel"></div>
+  <div class="db-nav-btns">
+    <button class="db-today-btn" onclick="goToday()">오늘</button>
+    <button class="db-nav-btn" onclick="changeMonth(-1)">&#8592;</button>
+    <button class="db-nav-btn" onclick="changeMonth(1)">&#8594;</button>
+  </div>
+</div>
+
+<!-- 요일 헤더 -->
+<div class="db-weekdays">
+  <div class="db-weekday sun">일</div>
+  <div class="db-weekday">월</div>
+  <div class="db-weekday">화</div>
+  <div class="db-weekday">수</div>
+  <div class="db-weekday">목</div>
+  <div class="db-weekday">금</div>
+  <div class="db-weekday sat">토</div>
+</div>
+
+<!-- 달력 -->
+<div class="db-calendar" id="calendar"></div>
+
+<!-- 범례 -->
+<div class="db-legend">
+  <div class="db-legend-item"><div class="db-legend-dot" style="background:#fecaca;"></div>핫이슈 TOP5</div>
+  <div class="db-legend-item"><div class="db-legend-dot" style="background:#c5cff5;"></div>보험뉴스 TOP3</div>
+  <div class="db-legend-item"><div class="db-legend-dot" style="background:#fde68a;"></div>보상사례</div>
+  <div class="db-legend-item"><div class="db-legend-dot" style="background:#bbf7d0;"></div>세일즈 스킬 한입</div>
+  <div class="db-legend-item"><div class="db-legend-dot" style="background:#ddd6fe;"></div>직업군 소개</div>
+  <div class="db-legend-item"><div class="db-legend-dot" style="background:#fbcfe8;"></div>고객 터치 미션</div>
+</div>
+
+<!-- 모달 -->
+<div class="db-modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="db-modal">
+    <div class="db-modal-head">
+      <div>
+        <div class="db-modal-date" id="modalDate"></div>
+        <div class="db-modal-day" id="modalDay"></div>
+      </div>
+      <button class="db-modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="db-modal-body" id="modalBody"></div>
+    <div class="db-modal-date-nav" id="modalDateNav">
+      <button class="db-modal-date-nav-btn" id="modalPrev" onclick="navigateModal(-1)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        이전 날
+      </button>
+      <button class="db-modal-date-nav-btn" id="modalNext" onclick="navigateModal(1)">
+        다음 날
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="db-modal-foot" id="modalFoot"></div>
+  </div>
+</div>
+
+<script>
+// ===== 데이터 =====
+// content.json에서 동적으로 로드 (GitHub Pages에서 매일 업데이트)
+let contentData = {};
+
+async function loadContentData() {
+  try {
+    const res = await fetch('../data/content.json?t=' + Date.now());
+    if (!res.ok) throw new Error('content.json fetch failed');
+    const json = await res.json();
+    // _meta 키는 히스토리 관리용이므로 제외하고 날짜별 데이터만 추출
+    Object.keys(json).forEach(key => {
+      if (key !== '_meta' && /^\d{4}-\d{2}-\d{2}$/.test(key)) {
+        contentData[key] = json[key];
+      }
+    });
+  } catch (e) {
+    console.warn('content.json 로드 실패, 빈 데이터로 렌더링:', e);
+    contentData = {};
+  }
+  renderCalendar();
+}
+
+const DAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
+const MONTH_NAMES = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+
+// 요일별 고정 콘텐츠 구조
+// 0=일, 1=월, 2=화, 3=수, 4=목, 5=금, 6=토
+const DOW_STRUCTURE = {
+  0: ['hot', 'skill', 'touch'],  // 일
+  1: ['hot', 'news',  'touch'],  // 월
+  2: ['hot', 'case',  'touch'],  // 화
+  3: ['hot', 'job',   'touch'],  // 수
+  4: ['hot', 'skill', 'touch'],  // 목
+  5: ['hot', 'case',  'touch'],  // 금
+  6: ['hot', 'job',   'touch'],  // 토
+};
+
+const TAG_CONFIG = {
+  hot:   { label: '핫이슈 TOP5',     cls: 'hot',   icon: '🔥' },
+  news:  { label: '보험뉴스 TOP3',   cls: 'news',  icon: '📰' },
+  case:  { label: '보상사례',        cls: 'case',  icon: '⚖️' },
+  skill: { label: '세일즈 스킬 한입', cls: 'skill', icon: '🎯' },
+  job:   { label: '직업군 소개',     cls: 'job',   icon: '👥' },
+  touch: { label: '고객 터치 미션',  cls: 'touch', icon: '❤️' },
+};
+
+// ===== 상태 =====
+const today = new Date();
+let currentYear  = today.getFullYear();
+let currentMonth = today.getMonth();
+let modalCurrentDate = null; // 현재 모달에 열린 날짜 {y, m, d}
+
+// ===== 유틸 =====
+function pad(n) { return String(n).padStart(2, '0'); }
+function dateKey(y, m, d) { return `${y}-${pad(m+1)}-${pad(d)}`; }
+function isTodayDate(y, m, d) {
+  return y === today.getFullYear() && m === today.getMonth() && d === today.getDate();
+}
+function isPastDate(y, m, d) {
+  const t = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const c = new Date(y, m, d);
+  return c < t;
+}
+
+// ===== 달력 렌더 =====
+function renderCalendar() {
+  const y = currentYear;
+  const m = currentMonth;
+
+  document.getElementById('monthLabel').innerHTML =
+    `<span>${y}년</span> ${MONTH_NAMES[m]}`;
+
+  const firstDay = new Date(y, m, 1).getDay(); // 0=일
+  const lastDate = new Date(y, m + 1, 0).getDate();
+
+  const cal = document.getElementById('calendar');
+  cal.innerHTML = '';
+
+  // 앞 빈 칸
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement('div');
+    empty.className = 'db-cell empty';
+    cal.appendChild(empty);
+  }
+
+  // 날짜 셀
+  for (let d = 1; d <= lastDate; d++) {
+    const dow = new Date(y, m, d).getDay();
+    const key = dateKey(y, m, d);
+    const data = contentData[key] || {};
+
+    const cell = document.createElement('div');
+    let cls = 'db-cell';
+    if (dow === 0) cls += ' sunday';
+    if (dow === 6) cls += ' saturday';
+    if (isTodayDate(y, m, d)) cls += ' today';
+    else if (isPastDate(y, m, d)) cls += ' past';
+    else cls += ' future';
+    cell.className = cls;
+
+    // 날짜 숫자
+    const dateDiv = document.createElement('div');
+    dateDiv.className = 'db-cell-date';
+    dateDiv.textContent = d;
+    cell.appendChild(dateDiv);
+
+    // 태그 (미래 날짜는 빈 칸)
+    const tagsDiv = document.createElement('div');
+    tagsDiv.className = 'db-cell-tags';
+
+    const isFuture = cell.classList.contains('future');
+
+    if (!isFuture) {
+      const structure = DOW_STRUCTURE[dow];
+      structure.forEach(type => {
+        const tag = document.createElement('span');
+        const cfg = TAG_CONFIG[type];
+        tag.className = `db-tag ${cfg.cls}`;
+
+        let text = cfg.icon + ' ' + cfg.label;
+        if (type === 'touch' && data.touch) text = cfg.icon + ' ' + data.touch;
+        if (type === 'case'  && data.case)  text = cfg.icon + ' ' + data.case;
+        if (type === 'news'  && data.news)  text = cfg.icon + ' ' + data.news;
+        if (type === 'skill' && data.skill) text = cfg.icon + ' ' + data.skill;
+        if (type === 'job'   && data.job)   text = cfg.icon + ' ' + data.job;
+
+        tag.textContent = text;
+        tagsDiv.appendChild(tag);
+      });
+    }
+
+    cell.appendChild(tagsDiv);
+
+    // 클릭 이벤트 (오늘 이전 또는 오늘만)
+    if (!cell.classList.contains('future')) {
+      cell.addEventListener('click', () => openModal(y, m, d, dow, data));
+    }
+
+    cal.appendChild(cell);
+  }
+}
+
+// ===== 모달 =====
+function openModal(y, m, d, dow, data) {
+  modalCurrentDate = { y, m, d };
+  const key = dateKey(y, m, d);
+  document.getElementById('modalDate').textContent =
+    `${y}년 ${m + 1}월 ${d}일`;
+  document.getElementById('modalDay').textContent =
+    `${DAY_NAMES[dow]}요일`;
+
+  const body = document.getElementById('modalBody');
+  body.innerHTML = '';
+
+  const structure = DOW_STRUCTURE[dow];
+
+  structure.forEach(type => {
+    const cfg = TAG_CONFIG[type];
+    const item = document.createElement('div');
+    item.className = `db-modal-item ${cfg.cls}`;
+
+    const label = document.createElement('div');
+    label.className = 'db-modal-item-label';
+    label.textContent = cfg.icon + ' ' + cfg.label;
+
+    const val = document.createElement('div');
+    val.className = 'db-modal-item-value';
+
+    let text = '—';
+    if (type === 'hot')   text = '오늘의 주요 뉴스 5건';
+    if (type === 'touch' && data.touch) text = data.touch;
+    if (type === 'case'  && data.case)  text = data.case;
+    if (type === 'news'  && data.news)  text = data.news;
+    if (type === 'skill' && data.skill) text = data.skill;
+    if (type === 'job'   && data.job)   text = data.job;
+
+    val.textContent = text;
+
+    item.appendChild(label);
+    item.appendChild(val);
+    body.appendChild(item);
+  });
+
+  document.getElementById('modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // 이전/다음 버튼 disabled 처리
+  const prevDate = addDays(y, m, d, -1);
+  const nextDate = addDays(y, m, d, 1);
+  const todayObj = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const nextObj  = new Date(nextDate.y, nextDate.m, nextDate.d);
+
+  document.getElementById('modalPrev').disabled = false;
+  document.getElementById('modalNext').disabled = nextObj > todayObj;
+
+  // 투데이 보기 버튼
+  const foot = document.getElementById('modalFoot');
+  foot.innerHTML = '';
+  if (data.url) {
+    const btn = document.createElement('a');
+    btn.className = 'db-modal-view-btn';
+    btn.href = data.url;
+    btn.target = '_blank';
+    btn.rel = 'noopener noreferrer';
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 투데이 보기`;
+    foot.appendChild(btn);
+  } else {
+    // URL이 없어도 GitHub Pages 경로로 자동 생성
+    const pageUrl = `../pages/${key}/`;
+    const btn = document.createElement('a');
+    btn.className = 'db-modal-view-btn';
+    btn.href = pageUrl;
+    btn.target = '_blank';
+    btn.rel = 'noopener noreferrer';
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> 투데이 보기`;
+    foot.appendChild(btn);
+  }
+}
+
+function addDays(y, m, d, delta) {
+  const date = new Date(y, m, d + delta);
+  return { y: date.getFullYear(), m: date.getMonth(), d: date.getDate() };
+}
+
+function navigateModal(dir) {
+  if (!modalCurrentDate) return;
+  const { y, m, d } = modalCurrentDate;
+  const next = addDays(y, m, d, dir);
+
+  // 오늘 이후로는 이동 불가
+  const todayObj = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const nextObj  = new Date(next.y, next.m, next.d);
+  if (nextObj > todayObj) return;
+
+  const dow  = new Date(next.y, next.m, next.d).getDay();
+  const data = contentData[dateKey(next.y, next.m, next.d)] || {};
+  openModal(next.y, next.m, next.d, dow, data);
+
+  // 달력 월이 바뀐 경우 달력도 업데이트
+  if (next.m !== currentMonth || next.y !== currentYear) {
+    currentYear  = next.y;
+    currentMonth = next.m;
+    renderCalendar();
+  }
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal')) closeModalDirect();
+}
+
+function closeModalDirect() {
+  document.getElementById('modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModalDirect();
+});
+
+// ===== 월 이동 =====
+function changeMonth(dir) {
+  currentMonth += dir;
+  if (currentMonth > 11) { currentMonth = 0;  currentYear++; }
+  if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
+  renderCalendar();
+}
+
+function goToday() {
+  currentYear  = today.getFullYear();
+  currentMonth = today.getMonth();
+  renderCalendar();
+}
+
+// ===== 초기 렌더 =====
+loadContentData();
+</script>
+</body>
+</html>

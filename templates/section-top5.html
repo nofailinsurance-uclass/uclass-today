@@ -1,0 +1,51 @@
+<!-- section-top5.html — 핫이슈 TOP5 스니펫 구조 참조
+     Claude가 이 구조에 맞춰 5개 이슈를 HTML로 출력한다.
+     base.html의 {{SECTION_TOP5}} 위치에 삽입된다.
+     감싸는 <div class="nfd-brief-top5">는 base.html에 이미 있으므로
+     아래 item 5개만 출력하면 된다.
+-->
+
+        <div class="nfd-brief-top5-item">
+          <span class="nfd-brief-top5-num">1</span>
+          <div class="nfd-brief-top5-body">
+            <p class="nfd-brief-top5-title">{이슈 1 제목}</p>
+            <p class="nfd-brief-top5-desc">{이슈 1 본문 2~4문장}</p>
+            <p class="nfd-brief-top5-source">출처: <a href="{URL}" target="_blank" rel="noopener">{매체명} — {기사제목 요약}</a></p>
+          </div>
+        </div>
+
+        <div class="nfd-brief-top5-item">
+          <span class="nfd-brief-top5-num">2</span>
+          <div class="nfd-brief-top5-body">
+            <p class="nfd-brief-top5-title">{이슈 2 제목}</p>
+            <p class="nfd-brief-top5-desc">{이슈 2 본문}</p>
+            <p class="nfd-brief-top5-source">출처: <a href="{URL}" target="_blank" rel="noopener">{매체명} — {기사제목 요약}</a></p>
+          </div>
+        </div>
+
+        <div class="nfd-brief-top5-item">
+          <span class="nfd-brief-top5-num">3</span>
+          <div class="nfd-brief-top5-body">
+            <p class="nfd-brief-top5-title">{이슈 3 제목}</p>
+            <p class="nfd-brief-top5-desc">{이슈 3 본문}</p>
+            <p class="nfd-brief-top5-source">출처: <a href="{URL}" target="_blank" rel="noopener">{매체명} — {기사제목 요약}</a></p>
+          </div>
+        </div>
+
+        <div class="nfd-brief-top5-item">
+          <span class="nfd-brief-top5-num">4</span>
+          <div class="nfd-brief-top5-body">
+            <p class="nfd-brief-top5-title">{이슈 4 제목}</p>
+            <p class="nfd-brief-top5-desc">{이슈 4 본문}</p>
+            <p class="nfd-brief-top5-source">출처: <a href="{URL}" target="_blank" rel="noopener">{매체명} — {기사제목 요약}</a></p>
+          </div>
+        </div>
+
+        <div class="nfd-brief-top5-item">
+          <span class="nfd-brief-top5-num">5</span>
+          <div class="nfd-brief-top5-body">
+            <p class="nfd-brief-top5-title">{이슈 5 제목}</p>
+            <p class="nfd-brief-top5-desc">{이슈 5 본문}</p>
+            <p class="nfd-brief-top5-source">출처: <a href="{URL}" target="_blank" rel="noopener">{매체명} — {기사제목 요약}</a></p>
+          </div>
+        </div>

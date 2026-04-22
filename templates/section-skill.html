@@ -1,0 +1,114 @@
+<!-- section-skill.html — 세일즈 스킬 한 입 스니펫 구조 참조 (목/일)
+     base.html의 {{SECTION_CATEGORY}} 위치에 삽입.
+     section 태그부터 포함하여 출력한다.
+     Claude는 이 구조에 맞춰 세일즈 한입 콘텐츠를 HTML로 출력한다.
+-->
+
+  <section class="nfd-brief-sec nfd-brief-sec--gray" id="section-news">
+    <div class="nfd-brief-sec-container">
+      <div class="nfd-brief-sec-header">
+        <p class="nfd-brief-sec-subtitle">현장에서 바로 쓰는 세일즈 무기</p>
+        <h2 class="nfd-brief-sec-title">🎯 세일즈 스킬 <span class="nfd-brief-accent">한 입</span></h2>
+        <p class="nfd-brief-sec-topic">{오늘의 무기 — 임팩트 한 줄 제목}</p>
+      </div>
+
+      <div class="nfd-brief-scripts">
+
+        <!-- 도입: 이런 상황 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">이런 상황, 다들 겪어보셨죠?</p>
+            <p class="nfd-brief-script-q">{고객의 대표 멘트}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{도입 상황 설명 + 흔한 실수 ❌ 멘트 + 왜 문제인지}</p>
+          </div>
+        </div>
+
+        <!-- 실전 스크립트 -->
+        <div class="nfd-brief-script" style="margin-top:20px !important;">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">실전 스크립트</p>
+            <p class="nfd-brief-script-q">{핵심 화법 한 줄}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <span class="nfd-brief-script-tag">바로 쓰는 화법</span>
+            <p class="nfd-brief-script-text" data-copy-id="sales-script">{실전 멘트 전체}</p>
+            <div class="nfd-brief-script-footer">
+              <button class="nfd-brief-copy-btn" data-copy-target="sales-script">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                복사하기
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 왜 이게 통할까 -->
+        <div class="nfd-brief-script" style="margin-top:20px !important;">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">왜 이게 통할까?</p>
+            <p class="nfd-brief-script-q">{심리학 원리 한 줄}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{심리학적 원리 설명 4~6문장. 책 이름 직접 인용 금지}</p>
+          </div>
+        </div>
+
+        <!-- 상황별 응용 비교표 -->
+        <div class="nfd-brief-script" style="margin-top:20px !important;">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">상황별 응용</p>
+            <p class="nfd-brief-script-q">{비교표 한 줄 요약}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <div style="overflow-x:auto !important; width:100% !important;">
+            <table class="nfd-brief-compare-table">
+              <thead>
+                <tr>
+                  <th>상황</th>
+                  <th><span class="nfd-brief-compare-bad">❌ 이렇게 하면 안 돼요</span></th>
+                  <th><span class="nfd-brief-compare-good">✅ 이렇게 해보세요</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{상황1 — 페르소나}<br><em>"{고객 멘트}"</em></td>
+                  <td>"{나쁜 멘트}"</td>
+                  <td>"{좋은 멘트 + 한국 시장 숫자}"</td>
+                </tr>
+                <tr>
+                  <td>{상황2 — 페르소나}<br><em>"{고객 멘트}"</em></td>
+                  <td>"{나쁜 멘트}"</td>
+                  <td>"{좋은 멘트 + 한국 시장 숫자}"</td>
+                </tr>
+                <tr>
+                  <td>{상황3 — 페르소나}<br><em>"{고객 멘트}"</em></td>
+                  <td>"{나쁜 멘트}"</td>
+                  <td>"{좋은 멘트 + 한국 시장 숫자}"</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 오늘 바로 해볼 것 -->
+        <div class="nfd-brief-script" style="margin-top:20px !important;">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">오늘 바로 해볼 것</p>
+            <p class="nfd-brief-script-q">{액션 아이템 한 줄}</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <p class="nfd-brief-script-text">{구체적 행동 1~2개}</p>
+          </div>
+        </div>
+
+        <!-- 한 줄 정리 -->
+        <div class="nfd-brief-summary-card" style="margin-top:20px !important;">
+          <p class="nfd-brief-summary-title">💡 한 줄 정리</p>
+          <p style="font-size:17px !important; font-weight:500 !important; color:#363636 !important; line-height:1.8em !important; word-break:keep-all !important;">{핵심 한 문장}</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
