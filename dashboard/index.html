@@ -716,7 +716,7 @@ function renderCalendar() {
 
     const isFuture = cell.classList.contains('future');
 
-    if (!isFuture) {
+    if (!isFuture && Object.keys(data).length > 0) {
       const structure = DOW_STRUCTURE[dow];
       structure.forEach(type => {
         const tag = document.createElement('span');
