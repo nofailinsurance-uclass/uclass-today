@@ -879,6 +879,11 @@ function goToday() {
 
 // ===== 초기 렌더 =====
 loadContentData();
+
+// iframe 높이 자동 전달
+function sendHeight() { window.parent.postMessage({ type: "uclass-dashboard-height", height: document.body.scrollHeight }, "*"); }
+window.addEventListener("load", function() { setTimeout(sendHeight, 500); });
+new MutationObserver(sendHeight).observe(document.body, { childList: true, subtree: true });
 </script>
 </body>
 </html>
