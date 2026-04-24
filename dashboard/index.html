@@ -615,7 +615,7 @@ async function loadContentData() {
     const json = await res.json();
     // _meta 키는 히스토리 관리용이므로 제외하고 날짜별 데이터만 추출
     Object.keys(json).forEach(key => {
-      if (key !== '_meta' && /^\d{4}-\d{2}-\d{2}$/.test(key)) {
+      if (key !== '_meta') {
         contentData[key] = json[key];
       }
     });
@@ -812,7 +812,7 @@ function openModal(y, m, d, dow, data) {
     foot.appendChild(btn);
   } else {
     // URL이 없어도 GitHub Pages 경로로 자동 생성
-    const pageUrl = `../pages/${key}/`;
+    const pageUrl = (contentData.pages && contentData.pages[key]) ? contentData.pages[key] : `../pages/${key}/`;
     const btn = document.createElement('a');
     btn.className = 'db-modal-view-btn';
     btn.href = pageUrl;
