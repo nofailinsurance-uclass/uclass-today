@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UCLASS TODAY — 2026.04.25</title>
+<style>
+/* ==========================================================
+   UCLASS TODAY — nfd-brief.css
+   통합 스타일시트 (공통 + 카테고리별 고유 CSS)
+   ========================================================== */
+
+/* ===== Reset (위젯 스코프) ===== */
+.nfd-brief *,
+.nfd-brief *::before,
+.nfd-brief *::after {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* ===== Base ===== */
+.nfd-brief {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif !important;
+  color: #1a1a1a !important;
+  line-height: 1.7 !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* ===== Hero ===== */
+.nfd-brief-hero {
+  position: relative !important;
+  width: 100% !important;
+  background: transparent !important;
+}
+
+.nfd-brief-hero::before,
+.nfd-brief-hero::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  width: 100px !important;
+  height: 100px !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+}
+
+.nfd-brief-hero::before {
+  left: 0 !important;
+  background: radial-gradient(circle at 100% 0%, transparent 100px, #fff 100px) !important;
+}
+
+.nfd-brief-hero::after {
+  right: 0 !important;
+  background: radial-gradient(circle at 0% 0%, transparent 100px, #fff 100px) !important;
+}
+
+.nfd-brief-hero-video-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+  overflow: hidden !important;
+  border-radius: 0 0 100px 100px !important;
+  z-index: 0 !important;
+  background: linear-gradient(135deg, #001a8c 0%, #0025B4 40%, #003ee0 70%, #1a4fff 100%) !important;
+}
+
+.nfd-brief-hero-video-wrap::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0,0,0,0.25) !important;
+  z-index: 1 !important;
+}
+
+.nfd-brief-hero-container {
+  position: relative !important;
+  z-index: 2 !important;
+  max-width: 1400px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 120px 40px !important;
+}
+
+.nfd-brief-hero-content {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.nfd-brief-hero-heading {
+  font-size: 65px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  line-height: 1.4em !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 32px !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-hero-desc {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  color: #fff !important;
+  line-height: 1.6em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-hero-stats {
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  margin-top: 60px !important;
+  padding-top: 32px !important;
+}
+
+.nfd-brief-hero-stat {
+  padding: 0 30px !important;
+  border-left: 1px solid rgba(255,255,255,0.3) !important;
+}
+
+.nfd-brief-hero-stat:first-child {
+  padding-left: 0 !important;
+  border-left: none !important;
+}
+
+.nfd-brief-hero-stat-text {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #fff !important;
+  line-height: 1.6em !important;
+}
+
+/* ===== 공통 섹션 ===== */
+.nfd-brief-sec {
+  width: 100% !important;
+  padding: 80px 0 !important;
+  position: relative !important;
+  background: #fff !important;
+}
+
+.nfd-brief-sec--gray {
+  background: #f8f9fc !important;
+}
+
+.nfd-brief-sec-container {
+  max-width: 1400px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 40px !important;
+}
+
+.nfd-brief-sec-header {
+  text-align: center !important;
+  margin-bottom: 50px !important;
+}
+
+.nfd-brief-sec-subtitle {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: #363636 !important;
+  line-height: 1.6em !important;
+  margin-bottom: 12px !important;
+}
+
+.nfd-brief-sec-title {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  line-height: 1.4em !important;
+  letter-spacing: -0.02em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-sec-topic {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #0025B4 !important;
+  line-height: 1.5em !important;
+  margin-top: 10px !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-accent { color: #0025B4 !important; }
+
+/* ===== TOP5 카드 (핫이슈 전용) ===== */
+.nfd-brief-top5 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+.nfd-brief-top5-item {
+  background: #fff !important;
+  border-radius: 10px !important;
+  border: 1px solid #eee !important;
+  padding: 28px 32px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+  display: flex !important;
+  gap: 24px !important;
+  align-items: flex-start !important;
+}
+
+.nfd-brief-top5-num {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  background: #0025B4 !important;
+  color: #fff !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+  line-height: 1 !important;
+}
+
+.nfd-brief-top5-body {
+  flex: 1 !important;
+}
+
+.nfd-brief-top5-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  line-height: 1.4em !important;
+  margin-bottom: 10px !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-top5-desc {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #555 !important;
+  line-height: 1.8em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-top5-source {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #aaa !important;
+  margin-top: 10px !important;
+  line-height: 1.5em !important;
+}
+
+.nfd-brief-top5-source a {
+  color: #aaa !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  transition: color 0.15s ease !important;
+}
+
+.nfd-brief-top5-source a:hover {
+  color: #0025B4 !important;
+}
+
+/* ===== 뉴스 카드 (보험업계 전용) ===== */
+.nfd-brief-news {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+.nfd-brief-news-item {
+  background: #fff !important;
+  border-radius: 10px !important;
+  border: 1px solid #eee !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+}
+
+.nfd-brief-news-top {
+  background: #0025B4 !important;
+  padding: 20px 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.nfd-brief-news-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 28px !important;
+  padding: 0 14px !important;
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  border-radius: 50px !important;
+  line-height: 1em !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+
+.nfd-brief-news-top-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  line-height: 1.4em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-news-body {
+  padding: 28px 28px 28px !important;
+}
+
+.nfd-brief-news-desc {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #555 !important;
+  line-height: 1.8em !important;
+  margin-bottom: 20px !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-news-desc strong {
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+}
+
+.nfd-brief-news-point {
+  background: #EEF1FF !important;
+  border-radius: 7px !important;
+  padding: 16px 22px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #0025B4 !important;
+  line-height: 1.7em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-news-point strong {
+  font-weight: 700 !important;
+}
+
+.nfd-brief-news-source {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #aaa !important;
+  margin-top: 14px !important;
+  line-height: 1.5em !important;
+}
+
+.nfd-brief-news-source a {
+  color: #aaa !important;
+  text-decoration: underline !important;
+}
+
+/* ===== 고객 터치 미션 카드 ===== */
+.nfd-brief-mission {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+.nfd-brief-mission-hero {
+  background: linear-gradient(135deg, #0025B4 0%, #1a4fff 100%) !important;
+  border-radius: 14px !important;
+  padding: 40px 40px !important;
+  margin-bottom: 28px !important;
+  box-shadow: 0 8px 32px rgba(0,37,180,0.2) !important;
+}
+
+.nfd-brief-mission-hero-label {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: rgba(255,255,255,0.7) !important;
+  margin-bottom: 10px !important;
+}
+
+.nfd-brief-mission-hero-title {
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  line-height: 1.4em !important;
+  margin-bottom: 16px !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-mission-hero-desc {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: rgba(255,255,255,0.85) !important;
+  line-height: 1.8em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-mission-why {
+  background: #fff !important;
+  border-radius: 10px !important;
+  border: 1px solid #eee !important;
+  padding: 28px 32px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+}
+
+.nfd-brief-mission-why-title {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: #0025B4 !important;
+  margin-bottom: 12px !important;
+}
+
+.nfd-brief-mission-why-desc {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #555 !important;
+  line-height: 1.8em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-mission-why-desc strong {
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+}
+
+/* 스크립트 카드 (판례브리핑에서 재사용) */
+.nfd-brief-scripts {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+.nfd-brief-script {
+  background: #fff !important;
+  border-radius: 10px !important;
+  border: 1px solid #eee !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+  transition: box-shadow 0.3s ease !important;
+}
+
+.nfd-brief-script:hover {
+  box-shadow: 0 8px 32px rgba(222, 229, 255, 0.8) !important;
+}
+
+.nfd-brief-script-top {
+  background: #0025B4 !important;
+  padding: 22px 28px !important;
+}
+
+.nfd-brief-script-situation {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: rgba(255,255,255,0.6) !important;
+  margin-bottom: 8px !important;
+  line-height: 1.4em !important;
+}
+
+.nfd-brief-script-q {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  line-height: 1.4em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-script-body {
+  padding: 28px 28px 32px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+.nfd-brief-script-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  align-self: flex-start !important;
+  padding: 7px 18px !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  background: #0025B4 !important;
+  line-height: 1.4em !important;
+  margin-bottom: 22px !important;
+}
+
+.nfd-brief-script-text {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #555 !important;
+  line-height: 1.8em !important;
+  word-break: keep-all !important;
+  flex: 1 !important;
+}
+
+.nfd-brief-script-text strong {
+  font-weight: 700 !important;
+  color: #0025B4 !important;
+}
+
+/* 요약 카드 */
+.nfd-brief-summary-card {
+  background: #f8f9fc !important;
+  border-radius: 14px !important;
+  border: 1px solid #e8ebf8 !important;
+  padding: 32px 36px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06) !important;
+}
+
+.nfd-brief-summary-title {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #0025B4 !important;
+  margin-bottom: 20px !important;
+  line-height: 1.4em !important;
+}
+
+.nfd-brief-summary-list {
+  list-style: none !important;
+}
+
+.nfd-brief-summary-list li {
+  display: flex !important;
+  gap: 10px !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #555 !important;
+  line-height: 1.8em !important;
+  margin-bottom: 8px !important;
+  word-break: keep-all !important;
+  align-items: flex-start !important;
+}
+
+.nfd-brief-summary-list li::before {
+  content: '✅' !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+.nfd-brief-summary-list li strong {
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+}
+
+/* 경고 박스 */
+.nfd-brief-warning {
+  background: #FFF8EC !important;
+  border-left: 4px solid #F5A623 !important;
+  border-radius: 0 7px 7px 0 !important;
+  padding: 16px 20px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #7a4f00 !important;
+  line-height: 1.6em !important;
+  word-break: keep-all !important;
+  margin-top: 20px !important;
+}
+
+/* ===== 하단 CTA ===== */
+.nfd-brief-bottom {
+  width: 100% !important;
+  padding: 80px 0 !important;
+  position: relative !important;
+  background: #fff !important;
+}
+
+.nfd-brief-bottom-container {
+  max-width: 1400px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 40px !important;
+  text-align: center !important;
+}
+
+.nfd-brief-bottom-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 20px !important;
+  max-width: 1400px !important;
+  margin: 0 auto 48px !important;
+}
+
+.nfd-brief-bottom-card {
+  background: #fff !important;
+  border: 1px solid #eee !important;
+  border-radius: 14px !important;
+  padding: 36px 22px !important;
+  text-align: center !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.nfd-brief-bottom-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 32px rgba(0, 37, 180, 0.1) !important;
+}
+
+.nfd-brief-bottom-card-icon { font-size: 48px !important; margin-bottom: 16px !important; line-height: 1 !important; }
+.nfd-brief-bottom-card-title { font-size: 18px !important; font-weight: 700 !important; color: #111 !important; line-height: 1.4em !important; margin-bottom: 10px !important; word-break: keep-all !important; }
+.nfd-brief-bottom-card-desc { font-size: 15px !important; font-weight: 400 !important; color: #888 !important; line-height: 1.6em !important; word-break: keep-all !important; }
+
+.nfd-brief-cta-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 22px 84px !important;
+  background: #0025B4 !important;
+  color: #fff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.4em !important;
+  border: none !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  font-family: inherit !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.nfd-brief-cta-btn:hover { opacity: 0.85 !important; }
+
+/* ===== 복사 버튼 ===== */
+.nfd-brief-script-footer {
+  display: flex !important;
+  justify-content: flex-end !important;
+  padding: 0 28px 24px !important;
+}
+
+.nfd-brief-copy-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 9px 20px !important;
+  background: #f0f3ff !important;
+  color: #0025B4 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  border: 1.5px solid #c5cff5 !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+  white-space: nowrap !important;
+}
+
+.nfd-brief-copy-btn:hover {
+  background: #0025B4 !important;
+  color: #fff !important;
+  border-color: #0025B4 !important;
+}
+
+.nfd-brief-copy-btn.copied {
+  background: #0025B4 !important;
+  color: #fff !important;
+  border-color: #0025B4 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .nfd-brief-script-footer {
+    padding: 0 18px 18px !important;
+  }
+  .nfd-brief-copy-btn {
+    font-size: 13px !important;
+    padding: 8px 16px !important;
+  }
+}
+
+/* 버튼명 full/short 전환 — data-label 방식 */
+.nfd-brief-nav-btn .nfd-brief-nav-label {
+  display: block !important;
+  white-space: nowrap !important;
+}
+.nfd-brief-nav-btn .nfd-brief-nav-label::before {
+  content: attr(data-full) !important;
+}
+@media screen and (max-width: 768px) {
+  .nfd-brief-nav-btn .nfd-brief-nav-label::before {
+    content: attr(data-short) !important;
+  }
+}
+
+/* ===== 오픈채팅방 모달 (CSS) ===== */
+.nfd-brief-modal-overlay {
+  display: none !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  background: rgba(0,0,0,0.55) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif !important;
+}
+
+.nfd-brief-modal-overlay.nfd-brief-modal-active {
+  display: flex !important;
+}
+
+.nfd-brief-modal {
+  position: relative !important;
+  background: #fff !important;
+  border-radius: 16px !important;
+  max-width: 460px !important;
+  width: 100% !important;
+  padding: 44px 36px 36px !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2) !important;
+  animation: nfdModalIn 0.3s ease !important;
+}
+
+@keyframes nfdModalIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.nfd-brief-modal * {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.nfd-brief-modal-close {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #f5f5f5 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  color: #666 !important;
+  transition: background 0.2s ease !important;
+}
+
+.nfd-brief-modal-close:hover {
+  background: #eee !important;
+  color: #333 !important;
+}
+
+.nfd-brief-modal-body {
+  text-align: center !important;
+}
+
+.nfd-brief-modal-label {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  line-height: 1.4em !important;
+  margin-bottom: 20px !important;
+  letter-spacing: -0.02em !important;
+}
+
+.nfd-brief-modal-desc {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #555 !important;
+  line-height: 1.7em !important;
+  word-break: keep-all !important;
+  margin-bottom: 24px !important;
+}
+
+.nfd-brief-modal-code {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #888 !important;
+  line-height: 1.4em !important;
+  margin-bottom: 28px !important;
+}
+
+.nfd-brief-modal-code strong {
+  font-weight: 700 !important;
+  color: #0025B4 !important;
+  font-size: 18px !important;
+  letter-spacing: 0.1em !important;
+}
+
+.nfd-brief-modal-cta {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  padding: 20px 24px !important;
+  background: #FEE500 !important;
+  color: #1a1a1a !important;
+  border-radius: 12px !important;
+  text-decoration: none !important;
+  font-family: inherit !important;
+  transition: background 0.2s ease, transform 0.2s ease !important;
+}
+
+.nfd-brief-modal-cta:hover {
+  background: #F5DC00 !important;
+  transform: translateY(-2px) !important;
+}
+
+.nfd-brief-modal-cta-main {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  line-height: 1.4em !important;
+}
+
+@media screen and (max-width: 768px) {
+  .nfd-brief-modal {
+    padding: 36px 24px 28px !important;
+  }
+  .nfd-brief-modal-label { font-size: 20px !important; }
+  .nfd-brief-modal-desc  { font-size: 15px !important; }
+}
+
+/* ===== 플로팅 네비게이션 바 ===== */
+.nfd-brief-nav {
+  position: fixed !important;
+  bottom: 28px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 9999 !important;
+  background: #fff !important;
+  border-radius: 60px !important;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.06) !important;
+  padding: 10px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  white-space: nowrap !important;
+}
+
+.nfd-brief-nav-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  padding: 10px 18px !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #555 !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  transition: background 0.18s ease, color 0.18s ease !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.nfd-brief-nav-btn:hover,
+.nfd-brief-nav-btn.active {
+  background: transparent !important;
+  color: #0025B4 !important;
+}
+
+.nfd-brief-nav-btn svg {
+  flex-shrink: 0 !important;
+}
+
+
+@media screen and (max-width: 768px) {
+  .nfd-brief-nav {
+    bottom: 16px !important;
+    left: 10px !important;
+    right: 10px !important;
+    transform: none !important;
+    width: auto !important;
+    padding: 10px 6px !important;
+    gap: 0 !important;
+    border-radius: 60px !important;
+  }
+  .nfd-brief-nav-btn {
+    flex: 1 !important;
+    flex-direction: column !important;
+    padding: 7px 2px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    gap: 4px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    border-radius: 40px !important;
+    min-width: 0 !important;
+  }
+  .nfd-brief-nav-btn span {
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+    line-height: 1.2em !important;
+  }
+  .nfd-brief-nav-btn svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
+
+/* ===== Animations ===== */
+.nfd-brief-anim-text {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(8px);
+  transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease !important;
+}
+
+.nfd-brief-anim-text.nfd-brief-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ===== Mobile ===== */
+@media screen and (max-width: 768px) {
+  .nfd-brief-hero::before,
+  .nfd-brief-hero::after {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .nfd-brief-hero::before {
+    background: radial-gradient(circle at 100% 0%, transparent 50px, #fff 50px) !important;
+  }
+  .nfd-brief-hero::after {
+    background: radial-gradient(circle at 0% 0%, transparent 50px, #fff 50px) !important;
+  }
+  .nfd-brief-hero-video-wrap {
+    border-radius: 0 0 50px 50px !important;
+  }
+  .nfd-brief-hero-container {
+    padding: 80px 20px !important;
+  }
+  .nfd-brief-hero-heading {
+    font-size: 30px !important;
+    margin-bottom: 18px !important;
+  }
+  .nfd-brief-hero-desc {
+    font-size: 15px !important;
+  }
+  .nfd-brief-hero-stats {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-top: 36px !important;
+    padding-top: 20px !important;
+  }
+  .nfd-brief-hero-stat {
+    padding: 0 !important;
+    border-left: none !important;
+  }
+  .nfd-brief-hero-stat-text { font-size: 14px !important; }
+  .nfd-brief-sec { padding: 50px 0 !important; }
+  .nfd-brief-sec-container { padding: 0 20px !important; }
+  .nfd-brief-sec-title { font-size: 22px !important; }
+  .nfd-brief-sec-subtitle { font-size: 14px !important; }
+  .nfd-brief-top5-item { flex-direction: column !important; gap: 12px !important; padding: 20px 18px !important; }
+  .nfd-brief-news-top { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+  .nfd-brief-news-top-title { font-size: 16px !important; }
+  .nfd-brief-news-body { padding: 20px !important; }
+  .nfd-brief-mission-hero { padding: 28px 24px !important; }
+  .nfd-brief-mission-hero-title { font-size: 22px !important; }
+  .nfd-brief-script-top { padding: 16px 18px !important; }
+  .nfd-brief-script-q { font-size: 15px !important; }
+  .nfd-brief-script-body { padding: 18px 18px 22px !important; }
+  .nfd-brief-script-text { font-size: 14px !important; }
+  .nfd-brief-bottom-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .nfd-brief-cta-btn { width: 100% !important; padding: 16px 24px !important; font-size: 15px !important; }
+  .nfd-brief-summary-card { padding: 22px 20px !important; }
+  .nfd-brief-bottom-container { padding: 0 20px !important; }
+}
+
+/* reset 예외 — 패딩이 필요한 컴포넌트 */
+.nfd-brief .nfd-brief-script-body {
+  padding: 32px 28px !important;
+}
+
+.nfd-brief .nfd-brief-script-top {
+  padding: 22px 28px !important;
+}
+
+.nfd-brief .nfd-brief-script-footer {
+  padding: 0 28px 24px !important;
+}
+
+.nfd-brief .nfd-brief-compare-table th {
+  padding: 12px 16px !important;
+}
+
+.nfd-brief .nfd-brief-compare-table td {
+  padding: 16px !important;
+}
+
+/* ===== 보상사례·직업별 공감 카테고리 전용 ===== */
+}
+
+/* cases 내 script 카드 간격 통일 */
+.nfd-brief-cases .nfd-brief-script + .nfd-brief-script {
+  margin-top: 20px !important;
+}
+
+
+
+/* 쟁점 라벨 카드 */
+.nfd-brief-case-dispute {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+
+.nfd-brief-case-dispute-item {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: flex-start !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.nfd-brief-case-dispute-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  padding: 4px 12px !important;
+  border-radius: 50px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  line-height: 1.4em !important;
+  margin-top: 2px !important;
+}
+
+.nfd-brief-case-dispute-item--insurer .nfd-brief-case-dispute-tag {
+  background: #fee2e2 !important;
+  color: #991B1B !important;
+}
+
+.nfd-brief-case-dispute-item--customer .nfd-brief-case-dispute-tag {
+  background: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+.nfd-brief-case-dispute-text {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #363636 !important;
+  line-height: 1.75em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-case-dispute-text strong {
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+}
+
+@media screen and (max-width: 768px) {
+  .nfd-brief-case-dispute-item {
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+  .nfd-brief-case-dispute-text { font-size: 14px !important; }
+}
+
+/* 출처 박스 */
+.nfd-brief-case-sources {
+  margin-top: 16px !important;
+  background: #f8f9fc !important;
+  border: 1px solid #edf0f8 !important;
+  border-radius: 8px !important;
+  padding: 16px 20px !important;
+}
+
+.nfd-brief-case-sources-label {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #0025B4 !important;
+  background: #e8ecff !important;
+  border-radius: 4px !important;
+  display: inline-block !important;
+  padding: 3px 10px !important;
+  margin-bottom: 12px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.nfd-brief-case-sources-list {
+  list-style: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.nfd-brief-case-sources-list li {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #888 !important;
+  line-height: 1.5em !important;
+  padding-left: 14px !important;
+  position: relative !important;
+}
+
+.nfd-brief-case-sources-list li::before {
+  content: '·' !important;
+  position: absolute !important;
+  left: 4px !important;
+  color: #bbb !important;
+}
+
+.nfd-brief-case-sources-list a {
+  color: #888 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  transition: color 0.15s ease !important;
+}
+
+.nfd-brief-case-sources-list a:hover {
+  color: #0025B4 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .nfd-brief-case-sources { padding: 14px 16px !important; }
+  .nfd-brief-case-sources-list li { font-size: 12px !important; }
+}
+
+/* ===== 판례·보상사례 카드 ===== */
+.nfd-brief-cases {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 32px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+.nfd-brief-case {
+  background: #fff !important;
+  border-radius: 10px !important;
+  border: 1px solid #eee !important;
+  padding: 32px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+}
+
+.nfd-brief-case-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-bottom: 10px !important;
+}
+
+.nfd-brief-case-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  padding: 0 16px !important;
+  background: #0025B4 !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  border-radius: 50px !important;
+  line-height: 1em !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+
+.nfd-brief-case-head-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  line-height: 1.4em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-case-ref {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #999 !important;
+  margin-bottom: 20px !important;
+  line-height: 1.5em !important;
+}
+
+.nfd-brief-case-block {
+  background: #f8f9fc !important;
+  border-radius: 8px !important;
+  border: 1px solid #edf0f8 !important;
+  padding: 20px 22px !important;
+  margin-bottom: 12px !important;
+}
+
+.nfd-brief-case-block:last-child {
+  margin-bottom: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.nfd-brief-case-label {
+  display: inline-block !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #0025B4 !important;
+  background: #e8ecff !important;
+  border-radius: 4px !important;
+  padding: 3px 10px !important;
+  line-height: 1.6em !important;
+  margin-bottom: 10px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.nfd-brief-case-value {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #363636 !important;
+  line-height: 1.85em !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-case-value strong {
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+}
+
+.nfd-brief-case-result {
+  background: #FEF2F2 !important;
+  border-radius: 8px !important;
+  border: 1px solid #fecaca !important;
+  padding: 18px 22px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #991B1B !important;
+  line-height: 1.7em !important;
+  word-break: keep-all !important;
+}
+
+/* 스크립트 섹션 헤더 위 간격 */
+.nfd-brief-cases + .nfd-brief-sec-header {
+  margin-top: 60px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .nfd-brief-case { padding: 22px 18px !important; }
+  .nfd-brief-case-head { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+  .nfd-brief-case-head-title { font-size: 16px !important; }
+  .nfd-brief-case-ref { font-size: 13px !important; margin-bottom: 16px !important; }
+  .nfd-brief-case-block { padding: 16px 16px !important; margin-bottom: 10px !important; }
+  .nfd-brief-case-value { font-size: 14px !important; }
+  .nfd-brief-case-result { font-size: 14px !important; padding: 14px 16px !important; }
+}
+
+/* ===== 세일즈 한입 비교표 전용 ===== */
+
+/* 상황별 응용 비교 표 */
+.nfd-brief-compare-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-family: inherit !important;
+  font-size: 15px !important;
+  line-height: 1.7em !important;
+}
+
+.nfd-brief-compare-table thead tr {
+  border-bottom: 2px solid #eee !important;
+}
+
+.nfd-brief-compare-table th {
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #555 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+  background: #f8f9fc !important;
+}
+
+.nfd-brief-compare-table th:first-child {
+  width: 18% !important;
+}
+
+.nfd-brief-compare-table th:nth-child(2),
+.nfd-brief-compare-table th:nth-child(3) {
+  width: 41% !important;
+}
+
+.nfd-brief-compare-table tbody tr {
+  border-bottom: 1px solid #eee !important;
+}
+
+.nfd-brief-compare-table tbody tr:last-child {
+  border-bottom: none !important;
+}
+
+.nfd-brief-compare-table td {
+  padding: 16px !important;
+  vertical-align: top !important;
+  color: #363636 !important;
+  font-size: 15px !important;
+  word-break: keep-all !important;
+}
+
+.nfd-brief-compare-table td:first-child {
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+}
+
+.nfd-brief-compare-table td em {
+  font-style: normal !important;
+  font-weight: 400 !important;
+  color: #888 !important;
+  font-size: 13px !important;
+}
+
+.nfd-brief-compare-table td:nth-child(2) {
+  background: #fff5f5 !important;
+  color: #7a2020 !important;
+}
+
+.nfd-brief-compare-table td:nth-child(3) {
+  background: #f0fdf4 !important;
+  color: #1a4a2a !important;
+}
+
+.nfd-brief-compare-bad {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  color: #991B1B !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+.nfd-brief-compare-good {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  color: #166534 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .nfd-brief-compare-table,
+  .nfd-brief-compare-table thead,
+  .nfd-brief-compare-table tbody,
+  .nfd-brief-compare-table th,
+  .nfd-brief-compare-table td,
+  .nfd-brief-compare-table tr {
+    display: block !important;
+  }
+  .nfd-brief-compare-table thead {
+    display: none !important;
+  }
+  .nfd-brief-compare-table tbody tr {
+    border: 1px solid #eee !important;
+    border-radius: 10px !important;
+    margin-bottom: 16px !important;
+    overflow: hidden !important;
+  }
+  .nfd-brief-compare-table tbody tr:last-child {
+    margin-bottom: 0 !important;
+  }
+  /* 1열: 상황 라벨 */
+  .nfd-brief-compare-table td:first-child {
+    background: #f8f9fc !important;
+    border-bottom: 1px solid #eee !important;
+    padding: 14px 16px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+  }
+  .nfd-brief-compare-table td:first-child em {
+    display: block !important;
+    font-size: 13px !important;
+    color: #888 !important;
+    margin-top: 2px !important;
+  }
+  /* 2열: ❌ */
+  .nfd-brief-compare-table td:nth-child(2) {
+    background: #fff5f5 !important;
+    border-bottom: 1px solid #fee2e2 !important;
+    padding: 14px 16px !important;
+    font-size: 14px !important;
+    color: #7a2020 !important;
+  }
+  .nfd-brief-compare-table td:nth-child(2)::before {
+    content: '❌ 이렇게 하면 안 돼요' !important;
+    display: block !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #991B1B !important;
+    margin-bottom: 8px !important;
+  }
+  /* 3열: ✅ */
+  .nfd-brief-compare-table td:nth-child(3) {
+    background: #f0fdf4 !important;
+    padding: 14px 16px !important;
+    font-size: 14px !important;
+    color: #1a4a2a !important;
+  }
+  .nfd-brief-compare-table td:nth-child(3)::before {
+    content: '✅ 이렇게 해보세요' !important;
+    display: block !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #166534 !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#fff;">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<div class="nfd-brief">
+
+  <!-- ===== 히어로 ===== -->
+  <section class="nfd-brief-hero">
+    <div class="nfd-brief-hero-video-wrap"></div>
+    <div class="nfd-brief-hero-container">
+      <div class="nfd-brief-hero-content">
+        <h1 class="nfd-brief-hero-heading nfd-brief-anim-text">
+          UCLASS TODAY<br>2026년 4월 25일 · 토요일
+        </h1>
+        <p class="nfd-brief-hero-desc nfd-brief-anim-text">
+          오늘의 핫이슈 TOP5 · 직업별 공감 포인트 · 고객 터치 미션<br>
+          실전에서 바로 꺼내 쓰는 설계사의 다정한 무기
+        </p>
+      </div>
+      <div class="nfd-brief-hero-stats">
+        <div class="nfd-brief-hero-stat nfd-brief-anim-text">
+          <p class="nfd-brief-hero-stat-text">2026.04.25 SAT</p>
+        </div>
+        <div class="nfd-brief-hero-stat nfd-brief-anim-text">
+          <p class="nfd-brief-hero-stat-text">핵이슈 TOP5, 직업별 공감 포인트, 고객 터치 미션</p>
+        </div>
+        <div class="nfd-brief-hero-stat nfd-brief-anim-text">
+          <p class="nfd-brief-hero-stat-text">유클래스랩</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 01: 핫이슈 TOP5 ===== -->
+  <section class="nfd-brief-sec" id="section-top5">
+    <div class="nfd-brief-sec-container">
+      <div class="nfd-brief-sec-header">
+        <p class="nfd-brief-sec-subtitle">고객과 나눌 대화 소재</p>
+        <h2 class="nfd-brief-sec-title">🔥 오늘의 핫이슈 <span class="nfd-brief-accent">TOP 5</span></h2>
+      </div>
+
+      <div class="nfd-brief-top5">
+<div class="nfd-brief-top5-item"><span class="nfd-brief-top5-num">1</span><div class="nfd-brief-top5-body"><p class="nfd-brief-top5-title">EU, 이스라엘과 협정 파기 무산…독일·이탈리아 반대로 제재 공전</p><p class="nfd-brief-top5-desc">룩셈부르크에서 열린 EU 외교장관 회의에서 카야 칼라스 외교안보 고위대표가 이스라엘과의 협정 정지를 검토했으나 독일·이탈리아의 반대로 실행이 무산됐다. 전직 장관·대사 350명이 협정의 전부 또는 일부 정지를 촉구한 서한을 제출했음에도 회원국 간 분열이 확인됐다. 스페인 총리 페드로 산체스는 "국제법을 위반하는 정부는 EU의 파트너가 될 수 없다"고 4월 19일 집회에서 공개 압박했다.</p><p class="nfd-brief-top5-source">출처: <a href="https://www.hani.co.kr/arti/international/international_general/1255338.html" target="_blank" rel="noopener">한겨레 — EU, '민간인 학살' 이스라엘과 협정 파기 무산…독일·이탈리아 반대</a></p></div></div><div class="nfd-brief-top5-item"><span class="nfd-brief-top5-num">2</span><div class="nfd-brief-top5-body"><p class="nfd-brief-top5-title">북한 대중국 수출, 2017년 대북제재 이후 최고치…북중 밀착 가속</p><p class="nfd-brief-top5-desc">중국 해관총서(관세청) 자료에 따르면 2026년 3월 북한의 대중국 수출액이 2017년 대북 경제제재 이후 최고 수준을 기록했다. 3월 평양~베이징 항공 노선과 여객열차가 동시 재개됐고, 왕이 중국 외교부장의 방북 등 고위급 교류가 잇따르며 북중 관계가 제재 이전 수준으로 빠르게 회복되고 있다. 대북 제재 체제의 실효성에 대한 국제사회의 우려가 커지고 있다.</p><p class="nfd-brief-top5-source">출처: <a href="https://www.donga.com/news/Politics/article/all/20260421/133777891/2" target="_blank" rel="noopener">동아일보 — [단독] 北의 3월 中수출, 2017년 대북제재 이후 최고…관계회복 바람 타고</a></p></div></div><div class="nfd-brief-top5-item"><span class="nfd-brief-top5-num">3</span><div class="nfd-brief-top5-body"><p class="nfd-brief-top5-title">트뤼도 "WTO·IMF 더 이상 본래 목적 못 해"…국제기구 재편론 부상</p><p class="nfd-brief-top5-desc">캐나다 총리 쥐스탱 트뤼도가 4월 24일 "세계무역기구(WTO)든 국제통화기금(IMF)든 지금 시대에 반드시 부합한다고 보기 어렵다"며 기존 다자 국제기구의 기능 상실을 공개 선언했다. 트럼프 행정부의 관세·외교 정책으로 촉발된 지정학적 격변 속에 캐나다는 "미국과의 유대가 이제는 약점"이라며 외교 다변화에 나서고 있다. 80년간 유지된 전후 국제질서의 제도적 기반이 흔들리고 있다는 경고가 G7 내부에서 나온 점에서 파급력이 크다.</p><p class="nfd-brief-top5-source">출처: <a href="http://www.edaily.co.kr/news/newspath.asp?newsid=05690806645419072" target="_blank" rel="noopener">이데일리 — 트뤼도 "기존 국제기구, 더이상 본래 목적 달성 못해"</a></p></div></div><div class="nfd-brief-top5-item"><span class="nfd-brief-top5-num">4</span><div class="nfd-brief-top5-body"><p class="nfd-brief-top5-title">한국판 IRA서 전기차 제외 위기…미·유럽·일본은 중국차 장벽 강화</p><p class="nfd-brief-top5-desc">미국·유럽·일본·인도가 관세와 보조금 정책으로 중국산 전기차 유입을 차단하는 사이, 한국의 전기차 지원 정책인 '한국판 IRA'에서 전기차가 제외될 위기에 처했다. 4월 24일 한국경제신문 분석에 따르면 글로벌 상위 자동차 시장 5개국 중 한국만 중국산 전기차에 대한 실질적 규제 장벽이 없는 상태다. 자국 전기차 산업 보호 공백이 장기화될 경우 국내 완성차·배터리 업계의 경쟁력 훼손이 불가피하다.</p><p class="nfd-brief-top5-source">출처: <a href="https://www.hankyung.com/article/2026042454351" target="_blank" rel="noopener">한국경제 — 美·유럽, 중국차 장벽 높일 때…'한국판 IRA'에선 전기차 제외 위기</a></p></div></div><div class="nfd-brief-top5-item"><span class="nfd-brief-top5-num">5</span><div class="nfd-brief-top5-body"><p class="nfd-brief-top5-title">연준 내부 통화정책 분열…'정책 불확실성'이 시장 최대 리스크로 부각</p><p class="nfd-brief-top5-desc">하나증권 박문환 이사는 4월 25일 분석에서 "현재 시장 혼란의 핵심은 전쟁이 아니라 연준 내부의 통화정책 방향 분열"이라고 진단했다. 트럼프 행정부의 관세 충격으로 인플레이션과 경기침체 우려가 동시에 고조되면서 연방준비제도(Fed) 위원들 사이에서도 금리 경로에 대한 이견이 표면화되고 있다. 정책 불확실성이 장기화될 경우 글로벌 자금 이탈과 달러 약세 압력이 동반 심화될 수 있다.</p><p class="nfd-brief-top5-source">출처: <a href="https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202604240320&t=NNv" target="_blank" rel="noopener">한국경제TV — 혼란의 핵심은 전쟁 아닌 '정책 분열'…연준 리스크 부각</a></p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 02: 요일별 카테고리 ===== -->
+<section class="nfd-brief-sec nfd-brief-sec--gray" id="section-news">
+  <div class="nfd-brief-sec-container">
+    <div class="nfd-brief-sec-header">
+      <p class="nfd-brief-sec-subtitle">첫 미팅 아이스브레이킹이 달라집니다</p>
+      <h2 class="nfd-brief-sec-title">👥 직업별 공감 <span class="nfd-brief-accent">포인트</span></h2>
+      <p class="nfd-brief-sec-topic">초등학교 교사 — 이 직업을 이해하면 마음의 문이 열립니다</p>
+    </div>
+    <div class="nfd-brief-scripts">
+      <div class="nfd-brief-script">
+        <div class="nfd-brief-script-top">
+          <p class="nfd-brief-script-situation">하루 루틴</p>
+          <p class="nfd-brief-script-q">수업은 오후에 끝나지만, 퇴근은 저녁입니다</p>
+        </div>
+        <div class="nfd-brief-script-body">
+          <p class="nfd-brief-script-text">아침 7시 40분 전후로 출근해 조회·수업·생활지도를 소화하고, 수업이 끝난 오후에도 학부모 상담, 행정 업무, 각종 공문 처리가 기다립니다. 방학이 있어 여유로울 것 같지만 연수·연구 수업 준비·학교 행사 기획으로 방학다운 방학을 누리기 어렵습니다. 겉으로 보이는 '칼퇴' 이미지와 실제 업무량 사이의 괴리가 크다는 걸 먼저 알아주면 대화가 달라집니다.</p>
+        </div>
+      </div>
+      <div class="nfd-brief-script" style="margin-top:20px !important;">
+        <div class="nfd-brief-script-top">
+          <p class="nfd-brief-script-situation">수입 구조</p>
+          <p class="nfd-brief-script-q">안정적이지만, 생각보다 빠듯합니다</p>
+        </div>
+        <div class="nfd-brief-script-body">
+          <p class="nfd-brief-script-text">초임 교사의 월 실수령액은 세후 230만~260만 원 수준이고, 호봉이 오를수록 점진적으로 올라 20년 차 전후로 400만 원대에 진입합니다. 공무원 연금이 있어 노후가 탄탄해 보이지만, 2015년 이후 임용된 교사는 연금 개혁으로 수령액이 이전 세대보다 크게 줄었습니다. '연금 있으니까 괜찮겠네'라는 말은 오히려 역효과입니다. 월급 외 추가 소득이 거의 없고, 부업도 법적으로 제한되어 있어 현금 흐름 관리에 민감합니다.</p>
+        </div>
+      </div>
+      <div class="nfd-brief-script" style="margin-top:20px !important;">
+        <div class="nfd-brief-script-top">
+          <p class="nfd-brief-script-situation">이 직업이 진짜 힘든 것들</p>
+          <p class="nfd-brief-script-q">아이들보다 학부모가 더 힘들다고 합니다</p>
+        </div>
+        <div class="nfd-brief-script-body">
+          <p class="nfd-brief-script-text">2023년 서이초 사건 이후 교권 침해 문제가 수면 위로 올라왔습니다. 악성 민원, 아동학대 신고 위협, SNS를 통한 교사 신상 공개 등으로 정신적 소진이 심각합니다. 실제로 교사 번아웃·우울증 비율이 타 직군 대비 높다는 조사 결과도 있습니다. 또한 학급당 학생 수 감소로 학교 통폐합·정원 감축 압박이 커지면서 고용 안정성에 대한 불안도 조용히 퍼지고 있습니다.</p>
+        </div>
+      </div>
+      <div class="nfd-brief-script" style="margin-top:20px !important;">
+        <div class="nfd-brief-script-top">
+          <p class="nfd-brief-script-situation">최근 이슈</p>
+          <p class="nfd-brief-script-q">교권 회복법 이후에도 현장은 여전히 살얼음판입니다</p>
+        </div>
+        <div class="nfd-brief-script-body">
+          <p class="nfd-brief-script-text">2024년 교원지위법 개정으로 정당한 생활지도는 아동학대로 보지 않는다는 조항이 생겼지만, 현장 교사들은 "법이 바뀌어도 민원은 그대로"라고 말합니다. 2025년 들어 AI 디지털 교과서 도입이 본격화되면서 디지털 역량 연수 부담도 가중됐습니다. 여기에 저출생으로 학생 수가 줄어 학교 구조조정 논의가 이어지고 있어, '평생 직장'이라는 인식이 흔들리기 시작했습니다. 이런 불안감이 보험·재무 상담의 자연스러운 진입 포인트가 됩니다.</p>
+        </div>
+      </div>
+      <div class="nfd-brief-script" style="margin-top:20px !important;">
+        <div class="nfd-brief-script-top">
+          <p class="nfd-brief-script-situation">고객이 들으면 마음이 열리는 공감 포인트</p>
+          <p class="nfd-brief-script-q">다른 직군과 확실히 차별화되는 말 5가지</p>
+        </div>
+        <div class="nfd-brief-script-body">
+          <p class="nfd-brief-script-text">① "방학 때도 진짜 쉬신 적 없으시죠?" — 외부에서 보는 '방학 = 휴가' 이미지를 먼저 깨줍니다. 교사들이 가장 오해받는다고 느끼는 부분이라 즉각적인 공감을 얻습니다.<br><br>② "요즘 학부모 민원 때문에 많이 힘드시다는 얘기 들었어요." — 서이초 사건 이후 교사들 사이에 공유된 집단적 감정을 건드립니다. '내 상황을 알고 있구나'라는 신뢰감을 줍니다.<br><br>③ "공무원 연금이 예전 같지 않다고 하던데, 실감하세요?" — 연금 개혁 이후 불안감을 갖고 있는 교사에게 재무 고민을 자연스럽게 꺼낼 수 있는 물꼬를 터줍니다.<br><br>④ "월급 외에 따로 뭔가 하기도 어려우시잖아요, 부업 제한도 있고." — 소득 다변화가 막혀 있다는 현실을 짚어줌으로써 재무 설계의 필요성을 스스로 느끼게 합니다.<br><br>⑤ "아이들 가르치면서 정작 선생님 건강은 챙기기 어려우셨겠다 싶어요." — 남을 돌보느라 자신을 뒤로 미루는 교사의 심리를 건드립니다. 건강·보장 상담으로 이어지는 가장 부드러운 연결고리입니다.</p>
+        </div>
+      </div>
+      <div class="nfd-brief-script" style="margin-top:20px !important;">
+        <div class="nfd-brief-script-top">
+          <p class="nfd-brief-script-situation">절대 하면 안 되는 말</p>
+          <p class="nfd-brief-script-q">이 말 한마디에 마음의 문이 닫힙니다</p>
+        </div>
+        <div class="nfd-brief-script-body">
+          <div class="nfd-brief-case-dispute" style="gap:12px !important;">
+            <div class="nfd-brief-case-dispute-item nfd-brief-case-dispute-item--insurer">
+              <span class="nfd-brief-case-dispute-tag">❌ 금지</span>
+              <p class="nfd-brief-case-dispute-text"><strong>"방학도 있고 칼퇴도 되니까 좋으시겠어요."</strong><br>→ 교사들이 가장 많이 듣고 가장 많이 상처받는 말입니다. 첫 마디에 이 말이 나오면 이후 어떤 말도 귀에 들어오지 않습니다.</p>
+            </div>
+            <div class="nfd-brief-case-dispute-item nfd-brief-case-dispute-item--insurer">
+              <span class="nfd-brief-case-dispute-tag">❌ 금지</span>
+              <p class="nfd-brief-case-dispute-text"><strong>"공무원이시니까 연금 있으셔서 노후는 걱정 없으시겠네요."</strong><br>→ 연금 개혁으로 실수령액이 줄었다는 걸 모르는 발언으로 들립니다. '이 사람은 내 상황을 모르는구나' 싶어 신뢰가 떨어집니다.</p>
+            </div>
+            <div class="nfd-brief-case-dispute-item nfd-brief-case-dispute-item--insurer">
+              <span class="nfd-brief-case-dispute-tag">❌ 금지</span>
+              <p class="nfd-brief-case-dispute-text"><strong>"요즘 애들이 문제죠, 선생님도 힘드시겠어요."</strong><br>→ 교사들은 아이들을 탓하지 않습니다. 힘든 건 아이들이 아니라 구조적 문제라는 걸 알기 때문에, 이 말은 공감이 아니라 편견으로 들립니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nfd-brief-summary-card" style="margin-top:20px !important;">
+        <p class="nfd-brief-summary-title">💡 미팅 전 이것만 기억하세요</p>
+        <p style="font-size:17px !important; font-weight:500 !important; color:#363636 !important; line-height:1.8em !important; word-break:keep-all !important;"><strong>"선생님은 남 걱정은 잘하시는데, 정작 본인 걱정은 뒤로 미루셨을 것 같아서요."</strong><br>교사는 직업 특성상 타인을 돌보는 데 익숙하고 자신의 필요를 표현하는 데 서툽니다. 이 한마디는 그 심리를 정확히 짚어주면서 '나를 이해하는 사람'이라는 인상을 줍니다. 보장 공백, 연금 불안, 소득 다변화 제한이라는 세 가지 현실적 고민으로 자연스럽게 대화를 이어갈 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ===== SECTION 03: 고객 터치 미션 ===== -->
+<section class="nfd-brief-sec" id="section-mission">
+  <div class="nfd-brief-sec-container">
+    <div class="nfd-brief-sec-header">
+      <p class="nfd-brief-sec-subtitle">오늘 바로 보낼 수 있는</p>
+      <h2 class="nfd-brief-sec-title">❤️ 고객 터치 미션</h2>
+      <p class="nfd-brief-sec-topic">한국, 인도·베트남과 손잡다 — 원전·항만 수출 소식, 고객에게 먼저 전하기</p>
+    </div>
+    <div class="nfd-brief-mission">
+      <div class="nfd-brief-mission-hero">
+        <p class="nfd-brief-mission-hero-label">💡 오늘의 연락 타이밍</p>
+        <h3 class="nfd-brief-mission-hero-title">"우리나라가 원전·항만 수출 나라가 됐어요"</h3>
+        <p class="nfd-brief-mission-hero-desc">이재명 대통령이 인도·베트남 순방을 마치고 오늘 귀국했어요. 이번 순방에서 신규 원전 건설, 항만 개발 등 굵직한 협력 약속이 이뤄졌거든요. 관세 전쟁으로 수출 걱정이 많던 요즘, "그래도 한국은 새 시장을 뚫고 있구나" 싶은 소식이라 고객분들이 반응이 좋을 타이밍이에요. 토요일 오전, 부담 없이 짧게 보내기 딱 좋아요.</p>
+      </div>
+      <div class="nfd-brief-mission-why">
+        <p class="nfd-brief-mission-why-title">📍 오늘 연락할 고객</p>
+        <p class="nfd-brief-mission-why-desc">✔ 평소 경제·뉴스에 관심 많은 고객<br>✔ 자녀 취업·창업을 앞두고 있어 경기 흐름에 민감한 고객<br>✔ 최근 3~6개월 내 연락이 뜸했던 고객 (토요일 가벼운 안부로 재접촉하기 좋아요)<br><br>👉 "이 사람은 뉴스도 챙겨서 나한테 알려주네" 하는 느낌을 주는 게 목표예요.</p>
+      </div>
+      <div class="nfd-brief-scripts">
+
+        <!-- 스크립트 1 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">📱 40~50대 고객 / 토요일 오전 10~11시</p>
+            <p class="nfd-brief-script-q">경제 뉴스에 관심 있는 고객에게 가볍게 안부 겸 정보 전달</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <span class="nfd-brief-script-tag"># 경제관심 고객 # 안부 재접촉</span>
+            <p class="nfd-brief-script-text" data-copy-id="script1">○○님, 토요일 아침 잘 보내고 계시죠? 😊
+
+오늘 대통령이 인도·베트남 순방 마치고 귀국했는데요, 이번에 원전 건설이랑 항만 개발 협력 약속을 꽤 크게 맺고 왔더라고요.
+
+요즘 미국 관세 때문에 수출 걱정이 많았잖아요. 그런데 이렇게 새 시장을 뚫는 걸 보니까 "그래도 한국은 움직이고 있구나" 싶어서 저도 좀 안심이 됐어요.
+
+○○님은 이런 뉴스 보셨어요? 주말에 좋은 시간 보내세요! 🙂</p>
+          </div>
+          <div class="nfd-brief-script-footer">
+            <button class="nfd-brief-copy-btn" data-copy-target="script1">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              복사하기
+            </button>
+          </div>
+        </div>
+
+        <!-- 스크립트 2 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">📱 30대 고객 / 토요일 오전~점심 사이</p>
+            <p class="nfd-brief-script-q">취업·커리어에 민감한 젊은 고객, 베트남·인도 시장 관심 유도</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <span class="nfd-brief-script-tag"># 30대 고객 # 커리어·경제 관심</span>
+            <p class="nfd-brief-script-text" data-copy-id="script2">○○님, 주말 잘 보내고 계시죠? 😄
+
+오늘 대통령 순방 결과 뉴스 보셨어요? 인도랑 베트남에서 원전·항만 수출 협력을 꽤 크게 맺고 왔더라고요.
+
+요즘 미국 관세 이슈로 수출 기업들 분위기가 좀 어수선했잖아요. 그런데 동남아·인도 쪽으로 새 판을 깔고 있으니까, 앞으로 이쪽 시장 관련 일자리나 사업 기회도 늘어날 수 있겠다 싶더라고요.
+
+○○님 혹시 이쪽 관심 있으세요? 그냥 뉴스 보다가 생각나서요 😊 좋은 주말 보내세요!</p>
+          </div>
+          <div class="nfd-brief-script-footer">
+            <button class="nfd-brief-copy-btn" data-copy-target="script2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              복사하기
+            </button>
+          </div>
+        </div>
+
+        <!-- 스크립트 3 -->
+        <div class="nfd-brief-script">
+          <div class="nfd-brief-script-top">
+            <p class="nfd-brief-script-situation">📱 50~60대 고객 / 토요일 오전</p>
+            <p class="nfd-brief-script-q">자녀 걱정 많은 부모 세대, 경기 흐름에 안도감 주는 톤</p>
+          </div>
+          <div class="nfd-brief-script-body">
+            <span class="nfd-brief-script-tag"># 50~60대 고객 # 자녀 걱정 많은 부모</span>
+            <p class="nfd-brief-script-text" data-copy-id="script3">○○님, 토요일 아침 여유롭게 보내고 계시죠? 😊
+
+오늘 대통령이 인도·베트남 순방 마치고 돌아왔는데요, 이번에 원전이랑 항만 수출 협력을 크게 맺고 왔다고 하더라고요.
+
+요즘 미국 관세 때문에 경기 걱정이 많으셨잖아요. 그런데 이렇게 새 나라들이랑 협력을 넓혀가는 걸 보면 "그래도 한국은 계속 뻗어나가고 있구나" 싶어서 저도 뉴스 보다가 좀 마음이 놓이더라고요.
+
+○○님도 좋은 소식으로 받아 가세요! 주말 편안히 보내시길 바랍니다 🙂</p>
+          </div>
+          <div class="nfd-brief-script-footer">
+            <button class="nfd-brief-copy-btn" data-copy-target="script3">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              복사하기
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="nfd-brief-summary-card" style="margin-top:28px;">
+        <p class="nfd-brief-summary-title">🎈 요약 카드 — 고객에게 그대로 복사해서 보내세요</p>
+        <ul class="nfd-brief-summary-list">
+          <li>🌏 이재명 대통령, 인도·베트남 순방 마치고 오늘 귀국 — 원전 건설·항만 개발 협력 약속 체결</li>
+          <li>📉 미국 관세 압박 속에서도 동남아·인도 신시장 개척 — 수출 다변화 포석</li>
+          <li>💬 관련 뉴스 더 보기 → 연합뉴스: https://www.yna.co.kr/view/AKR20260424098400001?input=1195m</li>
+        </ul>
+        <div class="nfd-brief-warning">
+          ⚠️ 이 터치 뒤에 보험 연결은 <strong>절대 금지</strong>. 순수하게 "좋은 정보 알려드리는 것"으로만 끝내세요. 신뢰가 먼저입니다.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ===== 하단 CTA ===== -->
+  <section class="nfd-brief-bottom">
+    <div class="nfd-brief-bottom-container">
+      <a href="https://uclasslab.com/uclasstoday" class="nfd-brief-cta-btn">유클래스 투데이 더보기</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== 플로팅 네비게이션 바 ===== -->
+<nav class="nfd-brief-nav" id="nfdNav">
+  <a class="nfd-brief-nav-btn" href="#section-top5">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0025B4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>
+    <span class="nfd-brief-nav-label" data-full="핫이슈 TOP5" data-short="핫이슈"></span>
+  </a>
+  <a class="nfd-brief-nav-btn" href="#section-news">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0025B4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span class="nfd-brief-nav-label" data-full="직업별 공감 포인트" data-short="직업별공감"></span>
+  </a>
+  <a class="nfd-brief-nav-btn" href="#section-mission">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0025B4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>
+    <span class="nfd-brief-nav-label" data-full="고객 터치 미션" data-short="터치미션"></span>
+  </a>
+  <button class="nfd-brief-nav-btn nfd-brief-nav-btn--kakao" id="nfdNavKakao" type="button">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0025B4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span class="nfd-brief-nav-label" data-full="오픈채팅방 입장" data-short="오픈채팅방"></span>
+  </button>
+  <button class="nfd-brief-nav-btn" id="nfdNavShare" type="button">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0025B4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+    </svg>
+    <span class="nfd-brief-nav-label" data-full="공유하기" data-short="공유하기"></span>
+  </button>
+</nav>
+
+<!-- ===== 오픈채팅방 모달 ===== -->
+<div class="nfd-brief-modal-overlay" id="nfdKakaoModal">
+  <div class="nfd-brief-modal">
+    <button type="button" class="nfd-brief-modal-close" id="nfdModalClose" aria-label="닫기">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="nfd-brief-modal-body">
+      <p class="nfd-brief-modal-label">오픈채팅방 안내</p>
+      <p class="nfd-brief-modal-desc">오픈채팅방 입장 후 방장님께 설계사 인증을 위해 명함을 보내주셔야 하며, 인증 방법은 입장 후 공지사항에서 확인해 주세요.</p>
+      <p class="nfd-brief-modal-code">입장 코드 <strong>0000</strong></p>
+      <a href="https://open.kakao.com/o/g7iwuzmi" class="nfd-brief-modal-cta" target="_blank" rel="noopener noreferrer">
+        <span class="nfd-brief-modal-cta-main">카카오 오픈채팅 입장하기</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  var wrap = document.querySelector('.nfd-brief');
+  if (!wrap || wrap.dataset.nfdBriefInit) return;
+  wrap.dataset.nfdBriefInit = '1';
+
+  var animEls = wrap.querySelectorAll('.nfd-brief-anim-text');
+  if (!animEls.length) return;
+
+  function revealEl(el, delay) {
+    setTimeout(function() { el.classList.add('nfd-brief-visible'); }, delay);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var idx = Array.prototype.indexOf.call(animEls, entry.target);
+          revealEl(entry.target, idx * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    animEls.forEach(function(el) { observer.observe(el); });
+
+    setTimeout(function() {
+      animEls.forEach(function(el, i) {
+        if (!el.classList.contains('nfd-brief-visible')) {
+          var rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            revealEl(el, i * 80);
+          }
+        }
+      });
+    }, 1500);
+  } else {
+    animEls.forEach(function(el, i) { revealEl(el, i * 80); });
+  }
+})();
+</script>
+
+<script>
+/* 복사 버튼 */
+document.querySelectorAll('.nfd-brief-copy-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var targetId = btn.getAttribute('data-copy-target');
+    var sourceEl = document.querySelector('[data-copy-id="' + targetId + '"]');
+    if (!sourceEl) return;
+
+    var html = sourceEl.innerHTML;
+    var tmp = document.createElement('div');
+    tmp.innerHTML = html
+      .replace(/<br\s*\/?>/gi, '\n')
+      .replace(/<strong[^>]*>(.*?)<\/strong>/gi, '$1')
+      .replace(/<[^>]+>/g, '');
+    var text = (tmp.textContent || tmp.innerText || '').replace(/\n{3,}/g, '\n\n').trim();
+
+    var svgCopy = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    var svgCheck = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+    function onSuccess() {
+      var orig = btn.innerHTML;
+      btn.classList.add('copied');
+      btn.innerHTML = svgCheck + ' 복사됐어요!';
+      setTimeout(function() {
+        btn.classList.remove('copied');
+        btn.innerHTML = svgCopy + ' 복사하기';
+      }, 2000);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onSuccess).catch(function() {
+        fallbackCopy(text); onSuccess();
+      });
+    } else {
+      fallbackCopy(text); onSuccess();
+    }
+  });
+});
+
+/* 네비게이션 스크롤 + active */
+(function() {
+  var sections = ['section-top5', 'section-news', 'section-mission'];
+  var btns = document.querySelectorAll('.nfd-brief-nav-btn');
+
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var href = btn.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      e.preventDefault();
+      var id = href.slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      var top = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 80;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+
+  function updateActive() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var active = 0;
+    sections.forEach(function(id, i) {
+      var el = document.getElementById(id);
+      if (el) {
+        var top = el.getBoundingClientRect().top + scrollY;
+        if (scrollY + 120 >= top) active = i;
+      }
+    });
+    btns.forEach(function(b, i) {
+      b.classList.toggle('active', i === active);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+})();
+
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+/* ===== 오픈채팅방 모달 ===== */
+(function() {
+  var overlay   = document.getElementById('nfdKakaoModal');
+  var openBtn   = document.getElementById('nfdNavKakao');
+  var closeBtn  = document.getElementById('nfdModalClose');
+
+  function openModal() {
+    overlay.classList.add('nfd-brief-modal-active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    overlay.classList.remove('nfd-brief-modal-active');
+    document.body.style.overflow = '';
+  }
+
+  if (openBtn)  openBtn.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (overlay)  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+
+/* ===== 공유하기 ===== */
+(function() {
+  var shareBtn = document.getElementById('nfdNavShare');
+  if (!shareBtn) return;
+
+  shareBtn.addEventListener('click', function() {
+    var shareData = {
+      title: 'UCLASS TODAY — 2026.04.25',
+      text:  '유클래스랩 오늘의 핫이슈 TOP5 · 직업별 공감 포인트 · 고객 터치 미션',
+      url:   window.location.href
+    };
+
+    if (navigator.share) {
+      navigator.share(shareData).catch(function() {});
+    } else {
+      var url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function() {
+          showShareToast('링크가 복사됐어요!');
+        }).catch(function() { fallbackShare(url); });
+      } else {
+        fallbackShare(url);
+      }
+    }
+  });
+
+  function fallbackShare(url) {
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy'); showShareToast('링크가 복사됐어요!'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+
+  function showShareToast(msg) {
+    var toast = document.createElement('div');
+    toast.textContent = msg;
+    toast.style.cssText = [
+      'position:fixed',
+      'bottom:110px',
+      'left:50%',
+      'transform:translateX(-50%)',
+      'background:#1a1a1a',
+      'color:#fff',
+      'font-size:14px',
+      'font-weight:600',
+      'padding:12px 24px',
+      'border-radius:50px',
+      'z-index:999999',
+      'white-space:nowrap',
+      'font-family:inherit',
+      'box-shadow:0 4px 20px rgba(0,0,0,0.2)',
+      'animation:nfdToastIn 0.2s ease'
+    ].join(';');
+
+    if (!document.getElementById('nfdToastStyle')) {
+      var s = document.createElement('style');
+      s.id = 'nfdToastStyle';
+      s.textContent = '@keyframes nfdToastIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}';
+      document.head.appendChild(s);
+    }
+
+    document.body.appendChild(toast);
+    setTimeout(function() {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.3s ease';
+      setTimeout(function() { document.body.removeChild(toast); }, 300);
+    }, 2000);
+  }
+})();
+</script>
+
+</body>
+</html>
