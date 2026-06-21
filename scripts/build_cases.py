@@ -201,21 +201,7 @@ def build_list(cases):
 <body style="margin:0;padding:0;background:#fff;">
 <div class="nfd-brief">
 
-  <section class="nfd-brief-hero nfd-case-hero">
-    <div class="nfd-brief-hero-video-wrap"></div>
-    <div class="nfd-brief-hero-container">
-      <div class="nfd-brief-hero-content">
-        <span class="nfd-case-hero-badge nfd-brief-anim-text">⚖️ 보험 보상 사례 브리핑</span>
-        <h1 class="nfd-brief-hero-heading nfd-brief-anim-text">보상사례 모아보기</h1>
-        <p class="nfd-brief-hero-desc nfd-brief-anim-text">
-          “이런 경우, 보험금 나올까요?”<br>
-          현장에서 바로 꺼내 쓰는 분쟁 사례 · 판례 · 고객 응대 스크립트
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="nfd-brief-sec nfd-brief-sec--gray">
+  <section class="nfd-brief-sec nfd-brief-sec--gray nfd-case-listsec">
     <div class="nfd-brief-sec-container">
 
       <div class="nfd-case-search">
@@ -327,6 +313,9 @@ LIST_DETAIL_CSS = """<style>
 .nfd-case-back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.85);font-size:15px;
   font-weight:600;text-decoration:none;margin-bottom:22px!important;}
 .nfd-case-back:hover{color:#fff;}
+
+/* 히어로 제거된 목록 섹션 — 상단 여백 축소(임베드 친화) */
+.nfd-case-listsec{padding:44px 0 70px!important;}
 
 /* 검색 */
 .nfd-case-search{position:relative;max-width:640px;margin:0 auto 14px!important;}
