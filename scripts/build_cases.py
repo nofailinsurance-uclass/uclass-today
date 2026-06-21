@@ -31,9 +31,13 @@ def fmt_dates(d):
 
 def load_cases():
     con = sqlite3.connect(DB); con.row_factory = sqlite3.Row
+    # review_status='blocked' 인 건은 발행 대상에서 제외 (게이트 차단 / 검수대기)
+    has_review = any(r[1] == "review_status"
+                     for r in con.execute("PRAGMA table_info(case_briefings)"))
+    where = "WHERE COALESCE(review_status,'ok') <> 'blocked'" if has_review else ""
     rows = con.execute(
         "SELECT vol, published_at, category, title, summary, keywords, html_snippet "
-        "FROM case_briefings ORDER BY vol DESC").fetchall()
+        f"FROM case_briefings {where} ORDER BY vol DESC").fetchall()
     return [dict(r) for r in rows]
 
 
