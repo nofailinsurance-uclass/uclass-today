@@ -150,6 +150,25 @@ document.querySelectorAll('.nfd-brief-copy-btn').forEach(function(btn){
       document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
   });
 });
+
+/* iframe 임베딩 시 부모창에 콘텐츠 높이 전달(모바일 높이 자동조절) */
+(function(){
+  if(window.parent === window) return;            // iframe 안일 때만
+  var last = 0;
+  function postHeight(){
+    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight,
+                     document.body.offsetHeight, document.documentElement.offsetHeight);
+    if(Math.abs(h - last) < 4) return;            // 미세 변동 무시
+    last = h;
+    try{ window.parent.postMessage({type:'uclass-cases-height', height:h}, '*'); }catch(e){}
+  }
+  window.addEventListener('load', postHeight);
+  window.addEventListener('resize', postHeight);
+  if('ResizeObserver' in window){ new ResizeObserver(postHeight).observe(document.body); }
+  // 검색/페이징/네비게이션 후 반영 보강
+  document.addEventListener('click', function(){ setTimeout(postHeight, 60); });
+  [120, 400, 1000].forEach(function(t){ setTimeout(postHeight, t); });
+})();
 </script>
 
 </body>
