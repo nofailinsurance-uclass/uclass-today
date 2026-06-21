@@ -28,20 +28,31 @@
 .nfd-case-search button:hover{background:#e0e4ee;color:#1a1a1a;}
 .nfd-case-count{text-align:center;color:#6b7488;font-size:14px;font-weight:500;margin:0 0 34px;}
 
-/* 카드 그리드 */
-.nfd-case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-.nfd-case-card{display:flex;flex-direction:column;background:#fff;border:1px solid #eceff5;border-radius:22px;
-  padding:30px 30px 26px;text-decoration:none;color:inherit;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
-  box-shadow:0 2px 14px rgba(16,30,70,.04);}
-.nfd-case-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,37,180,.12);border-color:#d4ddff;}
-.nfd-case-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
-.nfd-case-card-badge{display:inline-block;background:#eef2ff;color:#0025B4;font-size:13px;font-weight:700;padding:6px 13px;border-radius:50px;}
-.nfd-case-card-date{color:#9aa3b2;font-size:13px;font-weight:500;}
-.nfd-case-card-title{font-size:20px;font-weight:700;line-height:1.45em;color:#10183a;margin:0 0 12px;word-break:keep-all;}
-.nfd-case-card-summary{font-size:15px;line-height:1.65em;color:#5b6478;margin:0 0 18px;word-break:keep-all;flex:1;}
-.nfd-case-card-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
-.nfd-case-tag{font-size:12.5px;font-weight:500;color:#6b7488;background:#f4f6fb;padding:5px 11px;border-radius:50px;}
-.nfd-case-card-more{display:inline-flex;align-items:center;gap:4px;color:#0025B4;font-size:14.5px;font-weight:700;margin-top:auto;}
+/* 카드 그리드 — 균일 높이(라인클램프) */
+.nfd-case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;align-items:stretch;}
+.nfd-case-card{position:relative;display:flex;flex-direction:column;height:100%;background:#fff;
+  border:1px solid #e9edf5;border-radius:20px;padding:26px 26px 22px;text-decoration:none;color:inherit;
+  overflow:hidden;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  box-shadow:0 2px 12px rgba(16,30,70,.05);}
+.nfd-case-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;
+  background:linear-gradient(90deg,#0025B4,#1a4fff);opacity:0;transition:opacity .18s ease;}
+.nfd-case-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,37,180,.14);border-color:#cfd9ff;}
+.nfd-case-card:hover::before{opacity:1;}
+.nfd-case-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.nfd-case-card-badge{display:inline-flex;align-items:center;gap:5px;background:#eef2ff;color:#0025B4;
+  font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:50px;letter-spacing:-.01em;}
+.nfd-case-card-date{color:#aab2c2;font-size:12.5px;font-weight:600;}
+.nfd-case-card-title{font-size:18.5px;font-weight:700;line-height:1.45em;color:#0f1830;margin:0 0 11px;
+  word-break:keep-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:2.9em;}
+.nfd-case-card-summary{font-size:14.5px;line-height:1.6em;color:#646e82;margin:0 0 16px;word-break:keep-all;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:3.2em;}
+.nfd-case-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;max-height:28px;overflow:hidden;}
+.nfd-case-tag{font-size:12px;font-weight:500;color:#6b7488;background:#f4f6fb;padding:4px 10px;border-radius:50px;white-space:nowrap;}
+.nfd-case-card-more{display:inline-flex;align-items:center;gap:4px;color:#0025B4;font-size:14px;font-weight:700;
+  margin-top:auto;padding-top:4px;border-top:1px solid #f0f2f7;}
+.nfd-case-card-more svg{transition:transform .18s ease;}
+.nfd-case-card:hover .nfd-case-card-more svg{transform:translateX(3px);}
 .nfd-case-empty{text-align:center;color:#8a93a6;font-size:16px;font-weight:500;padding:60px 0;}
 
 /* 페이저 */
@@ -105,26 +116,218 @@
       <p class="nfd-case-count" id="caseCount"></p>
 
       <div class="nfd-case-grid" id="caseGrid">
-      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/2/" data-search="&quot;개인 차로 배달 알바 중 사고 났는데, 자동차보험에서 보험금을 안 준다고요?&quot; a씨는 평소 개인 용도로 등록된 자가용 승용차를 갖고 있었습니다. 부업으로 음식 배달 플랫폼에 등록해 배달 업무를 하던 중 교통사고가 발생했고, 자동차보험에 보험금을 청구했습니다. 그런데 보험사는 &quot;이 사고는 영업 목적으로 차량을 운전하던 중 발생한 사고에 해당한다&quot;며 보험금 지급을 거절했습니다. a씨는 &quot;내 개인 차인데 왜 안 되냐&quot;며 금융감독원에 분쟁조정을 신청했습니다. 배달,자가용,영업목적운전,자동차보험,보험금거절,분쟁조정,금융감독원,플랫폼">
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/18/" data-search="&quot;간편하게 가입했는데, 왜 보험금은 안 되나요?&quot; — 간편보험 가입 후 고지의무 위반으로 보험금 거절된 사연 50대 a씨는 b형간염 보균자였지만, 보험 설계사로부터 &quot;간편보험은 질문 항목이 적어서 괜찮다&quot;는 안내를 받고 가입했습니다. 간편보험은 &#x27;최근 3개월 입원·수술 여부&#x27;, &#x27;최근 2년 내 특정 질병 진단 여부&#x27; 등 몇 가지 간단한 질문만으로 가입이 가능한 상품입니다. a씨는 해당 질문 항목에 해당하지 않는다고 판단해 b형간염 보균 사실을 별도로 고지하지 않았습니다. 그런데 가입 후 간암 진단을 받아 보험금을 청구하자, 보험사는 &quot;가입 전 b형간염 보균 사실을 알렸다면 계약을 인수하지 않았을 것&quot;이라며 고지의무 위반을 이유로 계약 해지와 함께 보험금 지급을 거절했습니다. 입원,고지의무,간편보험,분쟁조정,금융감독원">
         <div class="nfd-case-card-top">
-          <span class="nfd-case-card-badge">⚖️ Vol.2</span>
-          <span class="nfd-case-card-date">2026.04.24</span>
+          <span class="nfd-case-card-badge">⚖️ Vol.18</span>
+          <span class="nfd-case-card-date">2026.06.19</span>
         </div>
-        <h3 class="nfd-case-card-title">&quot;개인 차로 배달 알바 중 사고 났는데, 자동차보험에서 보험금을 안 준다고요?&quot;</h3>
-        <p class="nfd-case-card-summary">A씨는 평소 개인 용도로 등록된 자가용 승용차를 갖고 있었습니다. 부업으로 음식 배달 플랫폼에 등록해 배달 업무를 하던 중 교통사고가 발생했고, 자동차보험에 보험금을 청구했습니다. 그런데 보험사는 &quot;이 사고는 영업 …</p>
-        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#배달</span><span class="nfd-case-tag">#자가용</span><span class="nfd-case-tag">#영업목적운전</span><span class="nfd-case-tag">#자동차보험</span><span class="nfd-case-tag">#보험금거절</span><span class="nfd-case-tag">#분쟁조정</span></div>
+        <h3 class="nfd-case-card-title">&quot;간편하게 가입했는데, 왜 보험금은 안 되나요?&quot; — 간편보험 가입 후 고지의무 위반으로 보험금 거절된 사연</h3>
+        <p class="nfd-case-card-summary">50대 A씨는 B형간염 보균자였지만, 보험 설계사로부터 &quot;간편보험은 질문 항목이 적어서 괜찮다&quot;는 안내를 받고 가입했습니다. 간편보험은 &#x27;최근 3개월 입원·수술 여부&#x27;, &#x27;최근 2년 내 특정 질병 진단 여부&#x27; 등 몇…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#입원</span><span class="nfd-case-tag">#고지의무</span><span class="nfd-case-tag">#간편보험</span><span class="nfd-case-tag">#분쟁조정</span><span class="nfd-case-tag">#금융감독원</span></div>
         <span class="nfd-case-card-more">자세히 보기
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </span>
       </a>
-      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/1/" data-search="&quot;검사 결과 정상이니 안 써도 돼요&quot; — 설계사의 한마디가 법정 다툼으로 2022년 8월, 보험설계사 e씨는 배우자 k씨를 피보험자로 하는 암보험 계약을 체결했습니다. 계약 직전 k씨는 병원에서 혈액검사 결과 간암 표지자(pivkaⅱ) 수치가 기준치를 초과해 간 ct 검사를 권유받았고, 실제로 검사를 받았습니다. 검사 결과에서 이상은 발견되지 않았지만, 설계사 e씨는 &quot;결과가 정상이니 고지할 필요가 없다&quot;고 판단해 k씨가 청약서의 &#x27;최근 3개월 내 검사 또는 추가검사 권유 여부&#x27; 항목에 &#x27;아니오&#x27;라고 기재하도록 안내했습니다. 이후 k씨가 간암 진단을 받아 보험사 a사는 약 4,072만 원의 보험금을 지급했고, a사는 설계사 e씨와 그가 소속된 보험대리점 g사를 상대로 손해배상 청구 소송을 제기했습니다. 고지의무,ct검사,청약서,고지누락,암보험,손해배상,설계사책임,보험금분쟁">
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/17/" data-search="5세대 실손 출시 후 &quot;도수치료 계속 받고 싶은데, 보험사가 보장 안 된다고 합니다&quot; 직장인 a씨(45세)는 허리 디스크로 인해 2년 전부터 매달 도수치료를 받아왔습니다. 3세대 실손보험에 가입되어 있어 치료비의 상당 부분을 보험으로 처리해 왔죠. 그런데 2026년 5월 이후, 보험사로부터 &quot;5세대 실손보험으로 전환 시 도수치료는 보장되지 않는다&quot;는 안내를 받았습니다. a씨는 보험사가 권유하는 대로 5세대로 전환했다가 이후 도수치료 보험금 청구가 거절되자 분쟁을 제기했습니다. 핵심은 &quot;전환 전 충분한 설명을 들었는가&quot;였습니다. 실손보험,실손,도수치료,주사,분쟁조정,금융감독원">
         <div class="nfd-case-card-top">
-          <span class="nfd-case-card-badge">⚖️ Vol.1</span>
+          <span class="nfd-case-card-badge">⚖️ Vol.17</span>
+          <span class="nfd-case-card-date">2026.06.16</span>
+        </div>
+        <h3 class="nfd-case-card-title">5세대 실손 출시 후 &quot;도수치료 계속 받고 싶은데, 보험사가 보장 안 된다고 합니다&quot;</h3>
+        <p class="nfd-case-card-summary">직장인 A씨(45세)는 허리 디스크로 인해 2년 전부터 매달 도수치료를 받아왔습니다. 3세대 실손보험에 가입되어 있어 치료비의 상당 부분을 보험으로 처리해 왔죠. 그런데 2026년 5월 이후, 보험사로부터 &quot;5세대 …</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#실손보험</span><span class="nfd-case-tag">#실손</span><span class="nfd-case-tag">#도수치료</span><span class="nfd-case-tag">#주사</span><span class="nfd-case-tag">#분쟁조정</span><span class="nfd-case-tag">#금융감독원</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/16/" data-search="유방암 항암 치료를 위해 케모포트 수술을 받았는데, 보험사는 &quot;암 직접 치료가 아니다&quot;라며 수술비를 거절했습니다 유방암 진단을 받은 b씨는 항암제를 반복 투여하기 위해 케모포트삽입술(항암제 투여용 관 이식 수술)을 받았습니다. 치료를 마친 뒤 암수술비 보험금을 청구했지만, 보험사는 &quot;이 수술은 항암제를 넣기 위한 처치일 뿐, 암을 직접 치료하는 수술이 아니다&quot;라며 지급을 거절했습니다. 이 사례는 2026년 6월 한국소비자원이 발표한 보험금 지급 거절 실태 분석에서 대표 사례로 공개됐습니다. 분석에 따르면, 2025년 한 해 동안 접수된 보험 관련 피해구제 신청 930건 중 85.8%(798건)가 보험금 지급 거절로 인해 발생했으며, 그 중 67.4%(538건)의 거절 사유가 &#x27;주치의 진단·치료 불인정&#x27;이었습니다. 항암,유방암,암보험,의료자문,뇌졸중,케모포트,금융감독원,수술비">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.16</span>
+          <span class="nfd-case-card-date">2026.06.12</span>
+        </div>
+        <h3 class="nfd-case-card-title">유방암 항암 치료를 위해 케모포트 수술을 받았는데, 보험사는 &quot;암 직접 치료가 아니다&quot;라며 수술비를 거절했습니다</h3>
+        <p class="nfd-case-card-summary">유방암 진단을 받은 B씨는 항암제를 반복 투여하기 위해 케모포트삽입술(항암제 투여용 관 이식 수술)을 받았습니다. 치료를 마친 뒤 암수술비 보험금을 청구했지만, 보험사는 &quot;이 수술은 항암제를 넣기 위한 처치일 뿐, …</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#항암</span><span class="nfd-case-tag">#유방암</span><span class="nfd-case-tag">#암보험</span><span class="nfd-case-tag">#의료자문</span><span class="nfd-case-tag">#뇌졸중</span><span class="nfd-case-tag">#케모포트</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/15/" data-search="대학병원에서 뇌졸중 진단받고 보험금 청구했더니, 보험사가 &quot;우리가 다시 확인해야 한다&quot;며 지급을 무기한 중단했습니다 a씨는 두통과 어지럼증으로 대학병원을 찾았고, mra(자기공명 혈관조영술) 검사 결과 경동맥 폐쇄에 따른 뇌졸중 진단을 받았습니다. 진단서와 검사 결과지를 첨부해 보험금을 청구했지만, 보험사는 &quot;자체 확인이 필요하다&quot;며 의료자문 동의를 요구했습니다. a씨가 이에 동의하지 않자, 보험사는 심사 절차를 무기한 중단했습니다. 결국 a씨는 한국소비자원에 피해구제를 신청했고, 이 사례는 2026년 6월 7일 소비자원이 발표한 보험금 분쟁 실태 분석 자료에 포함됐습니다. 의료자문,뇌졸중,분쟁조정,금융감독원">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.15</span>
+          <span class="nfd-case-card-date">2026.06.09</span>
+        </div>
+        <h3 class="nfd-case-card-title">대학병원에서 뇌졸중 진단받고 보험금 청구했더니, 보험사가 &quot;우리가 다시 확인해야 한다&quot;며 지급을 무기한 중단했습니다</h3>
+        <p class="nfd-case-card-summary">A씨는 두통과 어지럼증으로 대학병원을 찾았고, MRA(자기공명 혈관조영술) 검사 결과 경동맥 폐쇄에 따른 뇌졸중 진단을 받았습니다. 진단서와 검사 결과지를 첨부해 보험금을 청구했지만, 보험사는 &quot;자체 확인이 필요하다…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#의료자문</span><span class="nfd-case-tag">#뇌졸중</span><span class="nfd-case-tag">#분쟁조정</span><span class="nfd-case-tag">#금융감독원</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/14/" data-search="실손보험 가입 후 약관 기준이 바뀌었는데, 보험사가 아무 말도 안 했습니다 — 그래도 보험금 거절이 맞나요? 2017년에 실손보험에 가입한 a씨는 안과에서 백내장 진단을 받고, 의사의 권유로 다초점 인공수정체(다초점 렌즈)를 삽입하는 수술을 받았습니다. 수술 후 실손보험금을 청구했지만, 보험사는 &quot;약관상 보상하는 손해에 해당하지 않는다&quot;며 지급을 거절했습니다. a씨는 &quot;병원에서 치료 목적으로 받은 수술인데, 보험사가 질병 치료로 인정하지 않는 건 부당하다&quot;며 금융감독원에 분쟁조정을 신청했습니다. 이 사건은 2026년 5월 금감원이 보험업감독업무시행세칙 개정안을 공시하면서 대표 사례로 공개됐습니다. 실손보험,실손,백내장,분쟁조정,금융감독원">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.14</span>
+          <span class="nfd-case-card-date">2026.06.05</span>
+        </div>
+        <h3 class="nfd-case-card-title">실손보험 가입 후 약관 기준이 바뀌었는데, 보험사가 아무 말도 안 했습니다 — 그래도 보험금 거절이 맞나요?</h3>
+        <p class="nfd-case-card-summary">2017년에 실손보험에 가입한 A씨는 안과에서 백내장 진단을 받고, 의사의 권유로 다초점 인공수정체(다초점 렌즈)를 삽입하는 수술을 받았습니다. 수술 후 실손보험금을 청구했지만, 보험사는 &quot;약관상 보상하는 손해에 해…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#실손보험</span><span class="nfd-case-tag">#실손</span><span class="nfd-case-tag">#백내장</span><span class="nfd-case-tag">#분쟁조정</span><span class="nfd-case-tag">#금융감독원</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/13/" data-search="자궁근종으로 하이푸(hifu) 시술 받고 하루 입원했는데, 보험사가 &quot;입원이 아니다&quot;라며 보험금을 거절했습니다 40대 여성 박 씨는 복부 통증과 하혈 증상으로 병원을 찾았고, 의사 권유에 따라 자궁근종 치료를 위해 하이푸(hifu·고강도초음파집속술) 시술을 받았습니다. 시술 당일 낮병동에 입원 후 퇴원했으며, 치료비와 입원비로 약 600만 원이 청구됐습니다. 박 씨는 가입해 둔 실손보험에 입원의료비를 청구했지만, 보험사는 &quot;입원 필요성이 인정되지 않는다&quot;며 지급을 거절했습니다. 이와 같은 분쟁은 삼성화재, db손해보험, 메리츠화재, 현대해상, kb손해보험, 롯데손해보험 등 대부분의 손해보험사에서 속출하고 있습니다. 실손보험,실손,입원,통원,하이푸,hifu,자궁근종,비만">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.13</span>
+          <span class="nfd-case-card-date">2026.06.02</span>
+        </div>
+        <h3 class="nfd-case-card-title">자궁근종으로 하이푸(HIFU) 시술 받고 하루 입원했는데, 보험사가 &quot;입원이 아니다&quot;라며 보험금을 거절했습니다</h3>
+        <p class="nfd-case-card-summary">40대 여성 박 씨는 복부 통증과 하혈 증상으로 병원을 찾았고, 의사 권유에 따라 자궁근종 치료를 위해 하이푸(HIFU·고강도초음파집속술) 시술을 받았습니다. 시술 당일 낮병동에 입원 후 퇴원했으며, 치료비와 입원비…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#실손보험</span><span class="nfd-case-tag">#실손</span><span class="nfd-case-tag">#입원</span><span class="nfd-case-tag">#통원</span><span class="nfd-case-tag">#하이푸</span><span class="nfd-case-tag">#HIFU</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/12/" data-search="교통사고 경상 진단 후 8주 넘어 치료 중인데, 보험사가 &quot;이제 치료비 못 드립니다&quot;라고 했습니다 직장인 a씨는 2026년 봄, 신호 대기 중 뒤차에 추돌당해 목·허리 염좌(상해등급 14급) 진단을 받았습니다. 사고 과실은 상대방 100%. 처음 4주는 아무 문제 없이 치료비를 받았고, 추가 진단서를 제출해 8주까지 치료를 이어갔습니다. 그런데 8주가 지나자 보험사로부터 &quot;이제부터는 치료비를 지급할 수 없다&quot;는 통보를 받았습니다. 목 통증이 여전히 남아 있어 담당 의사도 추가 치료가 필요하다고 했지만, 보험사는 &quot;2026년 개정 약관에 따라 경상환자는 8주 초과 치료비를 원칙적으로 보상하지 않는다&quot;고 안내했습니다. a씨는 &quot;내 잘못도 아닌데 왜 치료를 못 받냐&quot;며 강하게 반발했습니다. 교통사고,향후치료비,자동차보험,분쟁조정,금융감독원,경상,염좌">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.12</span>
+          <span class="nfd-case-card-date">2026.05.29</span>
+        </div>
+        <h3 class="nfd-case-card-title">교통사고 경상 진단 후 8주 넘어 치료 중인데, 보험사가 &quot;이제 치료비 못 드립니다&quot;라고 했습니다</h3>
+        <p class="nfd-case-card-summary">직장인 A씨는 2026년 봄, 신호 대기 중 뒤차에 추돌당해 목·허리 염좌(상해등급 14급) 진단을 받았습니다. 사고 과실은 상대방 100%. 처음 4주는 아무 문제 없이 치료비를 받았고, 추가 진단서를 제출해 8주…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#교통사고</span><span class="nfd-case-tag">#향후치료비</span><span class="nfd-case-tag">#자동차보험</span><span class="nfd-case-tag">#분쟁조정</span><span class="nfd-case-tag">#금융감독원</span><span class="nfd-case-tag">#경상</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/11/" data-search="교통사고 후 8주 넘게 치료받고 있는데, 보험사가 갑자기 &quot;더 이상 치료비 못 드립니다&quot;라고 했습니다 직장인 a씨는 2026년 봄, 신호 대기 중 뒤에서 추돌당하는 사고를 당했습니다. 상대방 과실 100%였고, 목과 허리에 염좌(상해등급 13급) 진단을 받았습니다. 처음 4주는 별 문제 없이 치료비가 지급됐고, 추가 진단서를 제출해 8주까지 치료를 이어갔습니다. 그런데 8주가 지나자 보험사로부터 &quot;치료 필요성이 낮다고 판단되어 지급보증을 중단하겠다&quot;는 서면 통보가 날아왔습니다. a씨는 아직 목 통증이 남아 있었고, 주치의도 추가 치료가 필요하다는 소견이었습니다. 2026년부터 바뀐 자동차보험 약관에 따라 경상환자(상해등급 12~14급)가 8주를 초과해 치료를 받으려면 진료기록부 등 추가 서류를 제출해야 하고, 보험사가 치료 필요성이 낮다고 판단하면 지급보증을 중단할 수 있게 된 것입니다. 통원,교통사고,향후치료비,운전자보험,자동차보험,분쟁조정,경상,염좌">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.11</span>
+          <span class="nfd-case-card-date">2026.05.26</span>
+        </div>
+        <h3 class="nfd-case-card-title">교통사고 후 8주 넘게 치료받고 있는데, 보험사가 갑자기 &quot;더 이상 치료비 못 드립니다&quot;라고 했습니다</h3>
+        <p class="nfd-case-card-summary">직장인 A씨는 2026년 봄, 신호 대기 중 뒤에서 추돌당하는 사고를 당했습니다. 상대방 과실 100%였고, 목과 허리에 염좌(상해등급 13급) 진단을 받았습니다. 처음 4주는 별 문제 없이 치료비가 지급됐고, 추가…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#통원</span><span class="nfd-case-tag">#교통사고</span><span class="nfd-case-tag">#향후치료비</span><span class="nfd-case-tag">#운전자보험</span><span class="nfd-case-tag">#자동차보험</span><span class="nfd-case-tag">#분쟁조정</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/10/" data-search="교통사고로 목·허리 염좌 진단 → 보험사가 &quot;향후치료비 못 드립니다&quot; → &quot;예전엔 당연히 받았는데요?&quot; 직장인 a씨는 2026년 봄, 신호 대기 중 뒤차에 추돌당했습니다. 상대방 과실 100%로 확인됐고, 병원에서 목·허리 염좌(상해등급 14급) 진단을 받았습니다. 2~3주 통원치료를 마친 뒤 보험사 담당자에게 합의 연락이 왔는데, 예전에 비슷한 사고를 당했을 때와 달리 합의금 항목에 &#x27;향후치료비&#x27;가 빠져 있었습니다. 담당자는 &quot;2026년 갱신 약관부터는 경상환자에게 향후치료비를 드릴 수 없게 됐다&quot;고 안내했고, a씨는 &quot;치료가 더 필요할 수도 있는데 왜 안 되냐&quot;며 강하게 반발했습니다. 통원,교통사고,향후치료비,자동차보험,금융감독원,경상,염좌">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.10</span>
+          <span class="nfd-case-card-date">2026.05.22</span>
+        </div>
+        <h3 class="nfd-case-card-title">교통사고로 목·허리 염좌 진단 → 보험사가 &quot;향후치료비 못 드립니다&quot; → &quot;예전엔 당연히 받았는데요?&quot;</h3>
+        <p class="nfd-case-card-summary">직장인 A씨는 2026년 봄, 신호 대기 중 뒤차에 추돌당했습니다. 상대방 과실 100%로 확인됐고, 병원에서 목·허리 염좌(상해등급 14급) 진단을 받았습니다. 2~3주 통원치료를 마친 뒤 보험사 담당자에게 합의 …</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#통원</span><span class="nfd-case-tag">#교통사고</span><span class="nfd-case-tag">#향후치료비</span><span class="nfd-case-tag">#자동차보험</span><span class="nfd-case-tag">#금융감독원</span><span class="nfd-case-tag">#경상</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/9/" data-search="&quot;살 빼려고 위 절제 수술까지 받았는데, 실손보험이 안 된다고요?&quot; a씨는 고도비만으로 병원에서 &#x27;비만(질병코드 e66)&#x27; 진단을 받고, 위의 일부를 잘라내는 위소매절제술을 받았습니다. 수술 후 a씨는 실손의료보험에 치료비를 청구했지만, 보험사로부터 &quot;보상 대상이 아니다&quot;라는 통보를 받았습니다. 금융감독원이 2025년 7월 공식 발표한 실손보험 주요 분쟁 사례 중 하나입니다. 실손보험,실손,위소매절제,비만,당뇨,분쟁조정,금융감독원,면책">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.9</span>
+          <span class="nfd-case-card-date">2026.05.19</span>
+        </div>
+        <h3 class="nfd-case-card-title">&quot;살 빼려고 위 절제 수술까지 받았는데, 실손보험이 안 된다고요?&quot;</h3>
+        <p class="nfd-case-card-summary">A씨는 고도비만으로 병원에서 &#x27;비만(질병코드 E66)&#x27; 진단을 받고, 위의 일부를 잘라내는 위소매절제술을 받았습니다. 수술 후 A씨는 실손의료보험에 치료비를 청구했지만, 보험사로부터 &quot;보상 대상이 아니다&quot;라는 통보를…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#실손보험</span><span class="nfd-case-tag">#실손</span><span class="nfd-case-tag">#위소매절제</span><span class="nfd-case-tag">#비만</span><span class="nfd-case-tag">#당뇨</span><span class="nfd-case-tag">#분쟁조정</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/8/" data-search="백내장 수술 후 실손 청구 → 보험사가 &quot;약관상 보상 안 됩니다&quot; 거절 → 알고 보니 가입 후 지급기준이 몰래 바뀌어 있었다 2017년에 실손보험에 가입한 a씨는 백내장 치료를 위해 다초점 인공수정체를 삽입하는 수술을 받았습니다. 수술 후 실손보험금을 청구했지만, 보험사는 &quot;약관상 보상하는 손해에 해당하지 않는다&quot;는 이유로 지급을 거절했습니다. a씨는 분명히 병원에서 치료 목적으로 받은 수술인데 보험사가 질병 치료로 인정하지 않는 것은 부당하다며 금융감독원에 분쟁조정을 신청했습니다. 이 사례는 2026년 5월, 금융감독원이 보험사의 &#x27;깜깜이 지급기준 변경&#x27;을 막기 위한 제도 개편을 발표하면서 대표 사례로 공식 인용됐습니다. 실손보험,실손,백내장,분쟁조정,금융감독원">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.8</span>
+          <span class="nfd-case-card-date">2026.05.15</span>
+        </div>
+        <h3 class="nfd-case-card-title">백내장 수술 후 실손 청구 → 보험사가 &quot;약관상 보상 안 됩니다&quot; 거절 → 알고 보니 가입 후 지급기준이 몰래 바뀌어 있었다</h3>
+        <p class="nfd-case-card-summary">2017년에 실손보험에 가입한 A씨는 백내장 치료를 위해 다초점 인공수정체를 삽입하는 수술을 받았습니다. 수술 후 실손보험금을 청구했지만, 보험사는 &quot;약관상 보상하는 손해에 해당하지 않는다&quot;는 이유로 지급을 거절했습…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#실손보험</span><span class="nfd-case-tag">#실손</span><span class="nfd-case-tag">#백내장</span><span class="nfd-case-tag">#분쟁조정</span><span class="nfd-case-tag">#금융감독원</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/7/" data-search="&quot;보험사가 의료자문 동의서 내라고 해서 거절했더니, 실손보험금을 아예 안 준다고요?&quot; a씨는 하지정맥류 시술을 받고 실손보험금을 청구했습니다. 보험사는 &quot;치료의 의학적 필요성을 확인해야 한다&quot;며 제3자 의료자문 동의서에 서명해 달라고 요청했습니다. a씨는 &quot;내 주치의가 이미 필요하다고 판단해서 치료한 건데, 왜 또 다른 의사한테 검토를 받아야 하냐&quot;며 동의를 거절했습니다. 그러자 보험사는 &quot;사실 확인이 불가능하다&quot;는 이유로 보험금 지급을 거절했습니다. 2026년 4월, 손해보험협회 소비자포털에 동일한 유형의 민원이 접수되어 완료 처리됐으며, 같은 달 국회 토론회에서도 이 구조적 문제가 집중 논의됐습니다. 실손보험,실손,백내장,의료자문,하이푸,분쟁조정,금융감독원">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.7</span>
+          <span class="nfd-case-card-date">2026.05.12</span>
+        </div>
+        <h3 class="nfd-case-card-title">&quot;보험사가 의료자문 동의서 내라고 해서 거절했더니, 실손보험금을 아예 안 준다고요?&quot;</h3>
+        <p class="nfd-case-card-summary">A씨는 하지정맥류 시술을 받고 실손보험금을 청구했습니다. 보험사는 &quot;치료의 의학적 필요성을 확인해야 한다&quot;며 제3자 의료자문 동의서에 서명해 달라고 요청했습니다. A씨는 &quot;내 주치의가 이미 필요하다고 판단해서 치료한…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#실손보험</span><span class="nfd-case-tag">#실손</span><span class="nfd-case-tag">#백내장</span><span class="nfd-case-tag">#의료자문</span><span class="nfd-case-tag">#하이푸</span><span class="nfd-case-tag">#분쟁조정</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/6/" data-search="&quot;살 빼려고 맞은 주사인데, 당뇨 치료라고 하면 실손보험 되는 거 아닌가요?&quot; 실손보험에 가입한 a씨는 체중 감량을 원해 병원을 찾았습니다. 의사로부터 비만치료제 &#x27;마운자로&#x27;를 처방받았고, 병원 측은 &quot;당뇨 치료 목적으로 기록하면 실손보험 청구가 가능하다&quot;고 안내했습니다. a씨는 이를 믿고 실손보험을 청구했지만, 보험사는 &quot;비만 치료 목적의 비급여 약제비는 약관상 보상 대상이 아니다&quot;라며 지급을 거절했습니다. 이후 금융당국 조사에서 해당 병원이 진료기록을 허위로 작성해 왔다는 사실이 드러났고, 유사 사례가 전국적으로 급증하면서 사회적 분쟁으로 번졌습니다. 실손보험,실손,비만,당뇨,주사,금융감독원">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.6</span>
+          <span class="nfd-case-card-date">2026.05.08</span>
+        </div>
+        <h3 class="nfd-case-card-title">&quot;살 빼려고 맞은 주사인데, 당뇨 치료라고 하면 실손보험 되는 거 아닌가요?&quot;</h3>
+        <p class="nfd-case-card-summary">실손보험에 가입한 A씨는 체중 감량을 원해 병원을 찾았습니다. 의사로부터 비만치료제 &#x27;마운자로&#x27;를 처방받았고, 병원 측은 &quot;당뇨 치료 목적으로 기록하면 실손보험 청구가 가능하다&quot;고 안내했습니다. A씨는 이를 믿고 실…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#실손보험</span><span class="nfd-case-tag">#실손</span><span class="nfd-case-tag">#비만</span><span class="nfd-case-tag">#당뇨</span><span class="nfd-case-tag">#주사</span><span class="nfd-case-tag">#금융감독원</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/5/" data-search="비만 때문에 위소매절제술 받았는데, 실손보험 청구하면 보험금 나올까요? a씨는 고도비만으로 건강이 악화되자 병원에서 위소매절제술(위의 일부를 잘라내 용량을 줄이는 비만수술)을 받았습니다. 수술 후 실손보험사에 의료비를 청구했지만, 보험사는 &quot;비만 치료 목적의 수술은 보상 대상이 아니다&quot;라며 보험금 지급을 거절했습니다. a씨는 &quot;엄연히 수술을 받았고, 건강보험도 일부 적용됐는데 왜 실손보험은 안 되냐&quot;며 금융감독원에 분쟁조정을 신청했습니다. 실손보험,실손,위소매절제,비만,당뇨,분쟁조정,금융감독원">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.5</span>
+          <span class="nfd-case-card-date">2026.05.05</span>
+        </div>
+        <h3 class="nfd-case-card-title">비만 때문에 위소매절제술 받았는데, 실손보험 청구하면 보험금 나올까요?</h3>
+        <p class="nfd-case-card-summary">A씨는 고도비만으로 건강이 악화되자 병원에서 위소매절제술(위의 일부를 잘라내 용량을 줄이는 비만수술)을 받았습니다. 수술 후 실손보험사에 의료비를 청구했지만, 보험사는 &quot;비만 치료 목적의 수술은 보상 대상이 아니다&quot;…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#실손보험</span><span class="nfd-case-tag">#실손</span><span class="nfd-case-tag">#위소매절제</span><span class="nfd-case-tag">#비만</span><span class="nfd-case-tag">#당뇨</span><span class="nfd-case-tag">#분쟁조정</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/4/" data-search="&quot;내 차로 배달 알바 중 사고 났는데, 운전자보험 교통사고처리지원금 안 나온다고요?&quot; a씨는 평소 개인 용도로 등록된 자가용을 보유하고 있었고, 운전자보험에도 가입되어 있었습니다. 그런데 부업으로 매달 일정한 보수를 받으며 수시로 배달 업무를 해왔고, 사고가 난 날도 배달 중이었습니다. a씨는 사고 후 운전자보험의 &#x27;교통사고처리지원금&#x27;을 청구했지만, 보험사는 지급을 거절했습니다. 이에 a씨는 금융감독원에 분쟁조정을 신청했습니다. 이 사례는 2025년 상반기 금융감독원과 한국소비자원이 공개한 보험 분쟁조정사례 8건 중 하나입니다. 교통사고,교통사고처리지원금,운전자보험,자동차보험,배달,유상운송,분쟁조정,금융감독원">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.4</span>
+          <span class="nfd-case-card-date">2026.05.01</span>
+        </div>
+        <h3 class="nfd-case-card-title">&quot;내 차로 배달 알바 중 사고 났는데, 운전자보험 교통사고처리지원금 안 나온다고요?&quot;</h3>
+        <p class="nfd-case-card-summary">A씨는 평소 개인 용도로 등록된 자가용을 보유하고 있었고, 운전자보험에도 가입되어 있었습니다. 그런데 부업으로 매달 일정한 보수를 받으며 수시로 배달 업무를 해왔고, 사고가 난 날도 배달 중이었습니다. A씨는 사고 …</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#교통사고</span><span class="nfd-case-tag">#교통사고처리지원금</span><span class="nfd-case-tag">#운전자보험</span><span class="nfd-case-tag">#자동차보험</span><span class="nfd-case-tag">#배달</span><span class="nfd-case-tag">#유상운송</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/3/" data-search="&quot;가입할 때는 암이었는데, 지금은 양성종양이라고요?&quot; — 질병분류 개정으로 보험금을 거절당한 a씨 이야기 a씨는 2009년에 암 치료 특약이 포함된 보험에 가입했습니다. 수년 뒤 &#x27;요로상피성 유두종&#x27;이라는 질병을 진단받고 보험금을 청구했는데, 보험사로부터 뜻밖의 통보를 받았습니다. &quot;현재 질병분류 기준(kcd 8차)으로는 이 병이 &#x27;양성신생물(암이 아닌 종양)&#x27;에 해당하므로 보험금을 드릴 수 없습니다.&quot; a씨가 보험에 가입했던 2009년에는 이 질병이 &#x27;경계성 종양&#x27;으로 분류돼 보험금 지급 대상이었지만, 그 사이 질병분류 체계가 개정되면서 분류가 바뀐 것입니다. a씨는 금융감독원에 분쟁조정을 신청했습니다. 암보험,양성종양,질병분류,분쟁조정,금융감독원">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.3</span>
+          <span class="nfd-case-card-date">2026.04.28</span>
+        </div>
+        <h3 class="nfd-case-card-title">&quot;가입할 때는 암이었는데, 지금은 양성종양이라고요?&quot; — 질병분류 개정으로 보험금을 거절당한 A씨 이야기</h3>
+        <p class="nfd-case-card-summary">A씨는 2009년에 암 치료 특약이 포함된 보험에 가입했습니다. 수년 뒤 &#x27;요로상피성 유두종&#x27;이라는 질병을 진단받고 보험금을 청구했는데, 보험사로부터 뜻밖의 통보를 받았습니다. &quot;현재 질병분류 기준(KCD 8차)으로…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#암보험</span><span class="nfd-case-tag">#양성종양</span><span class="nfd-case-tag">#질병분류</span><span class="nfd-case-tag">#분쟁조정</span><span class="nfd-case-tag">#금융감독원</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/2/" data-search="백내장 수술 후 실손보험금을 청구했더니 &quot;입원이 아니다&quot;라며 거절당했습니다 60대 a씨는 시야가 뿌옇고 일상생활이 불편해 안과를 찾았고, 노년성 백내장 진단을 받아 양쪽 눈에 다초점 인공수정체 삽입 수술을 받았습니다. 수술 후 수 시간 병원에 머물다 당일 퇴원했고, 총 의료비 약 1,400만 원을 실손보험에 청구했습니다. 그런데 보험사는 &quot;이 수술은 입원 치료가 아닌 통원 치료에 해당한다&quot;며 하루 25만 원 한도만 지급하겠다고 통보했습니다. 이에 a씨는 보험사를 상대로 소송을 제기했고, 이와 유사한 분쟁이 전국적으로 수천 건에 달하며 사회적 이슈로 번졌습니다. 실손보험,실손,백내장,입원,통원,분쟁조정,금융감독원,수술비">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.2</span>
           <span class="nfd-case-card-date">2026.04.24</span>
         </div>
-        <h3 class="nfd-case-card-title">&quot;검사 결과 정상이니 안 써도 돼요&quot; — 설계사의 한마디가 법정 다툼으로</h3>
-        <p class="nfd-case-card-summary">2022년 8월, 보험설계사 E씨는 배우자 K씨를 피보험자로 하는 암보험 계약을 체결했습니다. 계약 직전 K씨는 병원에서 혈액검사 결과 간암 표지자(PIVKAⅡ) 수치가 기준치를 초과해 간 CT 검사를 권유받았고, …</p>
-        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#고지의무</span><span class="nfd-case-tag">#CT검사</span><span class="nfd-case-tag">#청약서</span><span class="nfd-case-tag">#고지누락</span><span class="nfd-case-tag">#암보험</span><span class="nfd-case-tag">#손해배상</span></div>
+        <h3 class="nfd-case-card-title">백내장 수술 후 실손보험금을 청구했더니 &quot;입원이 아니다&quot;라며 거절당했습니다</h3>
+        <p class="nfd-case-card-summary">60대 A씨는 시야가 뿌옇고 일상생활이 불편해 안과를 찾았고, 노년성 백내장 진단을 받아 양쪽 눈에 다초점 인공수정체 삽입 수술을 받았습니다. 수술 후 수 시간 병원에 머물다 당일 퇴원했고, 총 의료비 약 1,400…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#실손보험</span><span class="nfd-case-tag">#실손</span><span class="nfd-case-tag">#백내장</span><span class="nfd-case-tag">#입원</span><span class="nfd-case-tag">#통원</span><span class="nfd-case-tag">#분쟁조정</span></div>
+        <span class="nfd-case-card-more">자세히 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </a>
+      <a class="nfd-case-card nfd-brief-anim-text" href="/cases/1/" data-search="&quot;설계사한테 다 말했는데요?&quot; — 구두 고지만 했다가 보험금 한 푼도 못 받은 사례 a씨는 보험 가입 전 정형외과에서 약 2주간 통원치료를 받은 이력이 있었습니다. 가입 당시 담당 설계사에게 이 사실을 구두로 설명했고, 설계사는 &quot;그 정도면 괜찮다&quot;고 안심시켰습니다. 그런데 청약서의 &#x27;최근 5년 내 7일 이상 치료 여부&#x27; 항목에는 &#x27;아니오&#x27;로 체크가 되어 있었습니다. 이후 a씨가 허리 디스크 수술을 받고 보험금을 청구하자, 보험사는 과거 진료 기록을 확인하고 고지의무 위반을 이유로 보험금 지급을 거절하고 계약을 해지했습니다. a씨는 &quot;분명히 설계사에게 말했다&quot;고 주장했지만, 서면 기록이 없어 입증이 어려웠습니다. 이 유형의 분쟁은 2026년 현재 손해보험사 분쟁조정 신청 건수가 3년 연속 증가하는 가운데 가장 빈번하게 발생하는 사례 중 하나입니다. 통원,고지의무,교통사고,분쟁조정,금융감독원,수술비">
+        <div class="nfd-case-card-top">
+          <span class="nfd-case-card-badge">⚖️ Vol.1</span>
+          <span class="nfd-case-card-date">2026.04.23</span>
+        </div>
+        <h3 class="nfd-case-card-title">&quot;설계사한테 다 말했는데요?&quot; — 구두 고지만 했다가 보험금 한 푼도 못 받은 사례</h3>
+        <p class="nfd-case-card-summary">A씨는 보험 가입 전 정형외과에서 약 2주간 통원치료를 받은 이력이 있었습니다. 가입 당시 담당 설계사에게 이 사실을 구두로 설명했고, 설계사는 &quot;그 정도면 괜찮다&quot;고 안심시켰습니다. 그런데 청약서의 &#x27;최근 5년 내…</p>
+        <div class="nfd-case-card-tags"><span class="nfd-case-tag">#통원</span><span class="nfd-case-tag">#고지의무</span><span class="nfd-case-tag">#교통사고</span><span class="nfd-case-tag">#분쟁조정</span><span class="nfd-case-tag">#금융감독원</span><span class="nfd-case-tag">#수술비</span></div>
         <span class="nfd-case-card-more">자세히 보기
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </span>

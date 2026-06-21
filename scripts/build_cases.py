@@ -319,20 +319,31 @@ LIST_DETAIL_CSS = """<style>
 .nfd-case-search button:hover{background:#e0e4ee;color:#1a1a1a;}
 .nfd-case-count{text-align:center;color:#6b7488;font-size:14px;font-weight:500;margin:0 0 34px;}
 
-/* 카드 그리드 */
-.nfd-case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-.nfd-case-card{display:flex;flex-direction:column;background:#fff;border:1px solid #eceff5;border-radius:22px;
-  padding:30px 30px 26px;text-decoration:none;color:inherit;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
-  box-shadow:0 2px 14px rgba(16,30,70,.04);}
-.nfd-case-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,37,180,.12);border-color:#d4ddff;}
-.nfd-case-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
-.nfd-case-card-badge{display:inline-block;background:#eef2ff;color:#0025B4;font-size:13px;font-weight:700;padding:6px 13px;border-radius:50px;}
-.nfd-case-card-date{color:#9aa3b2;font-size:13px;font-weight:500;}
-.nfd-case-card-title{font-size:20px;font-weight:700;line-height:1.45em;color:#10183a;margin:0 0 12px;word-break:keep-all;}
-.nfd-case-card-summary{font-size:15px;line-height:1.65em;color:#5b6478;margin:0 0 18px;word-break:keep-all;flex:1;}
-.nfd-case-card-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
-.nfd-case-tag{font-size:12.5px;font-weight:500;color:#6b7488;background:#f4f6fb;padding:5px 11px;border-radius:50px;}
-.nfd-case-card-more{display:inline-flex;align-items:center;gap:4px;color:#0025B4;font-size:14.5px;font-weight:700;margin-top:auto;}
+/* 카드 그리드 — 균일 높이(라인클램프) */
+.nfd-case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;align-items:stretch;}
+.nfd-case-card{position:relative;display:flex;flex-direction:column;height:100%;background:#fff;
+  border:1px solid #e9edf5;border-radius:20px;padding:26px 26px 22px;text-decoration:none;color:inherit;
+  overflow:hidden;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  box-shadow:0 2px 12px rgba(16,30,70,.05);}
+.nfd-case-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;
+  background:linear-gradient(90deg,#0025B4,#1a4fff);opacity:0;transition:opacity .18s ease;}
+.nfd-case-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,37,180,.14);border-color:#cfd9ff;}
+.nfd-case-card:hover::before{opacity:1;}
+.nfd-case-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.nfd-case-card-badge{display:inline-flex;align-items:center;gap:5px;background:#eef2ff;color:#0025B4;
+  font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:50px;letter-spacing:-.01em;}
+.nfd-case-card-date{color:#aab2c2;font-size:12.5px;font-weight:600;}
+.nfd-case-card-title{font-size:18.5px;font-weight:700;line-height:1.45em;color:#0f1830;margin:0 0 11px;
+  word-break:keep-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:2.9em;}
+.nfd-case-card-summary{font-size:14.5px;line-height:1.6em;color:#646e82;margin:0 0 16px;word-break:keep-all;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:3.2em;}
+.nfd-case-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;max-height:28px;overflow:hidden;}
+.nfd-case-tag{font-size:12px;font-weight:500;color:#6b7488;background:#f4f6fb;padding:4px 10px;border-radius:50px;white-space:nowrap;}
+.nfd-case-card-more{display:inline-flex;align-items:center;gap:4px;color:#0025B4;font-size:14px;font-weight:700;
+  margin-top:auto;padding-top:4px;border-top:1px solid #f0f2f7;}
+.nfd-case-card-more svg{transition:transform .18s ease;}
+.nfd-case-card:hover .nfd-case-card-more svg{transform:translateX(3px);}
 .nfd-case-empty{text-align:center;color:#8a93a6;font-size:16px;font-weight:500;padding:60px 0;}
 
 /* 페이저 */
