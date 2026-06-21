@@ -198,7 +198,7 @@ def build_list(cases):
 {FONT}
 {LIST_DETAIL_CSS}
 </head>
-<body style="margin:0;padding:0;background:#fff;">
+<body style="margin:0;padding:0;background:transparent;">
 <div class="nfd-brief">
 
   <section class="nfd-brief-sec nfd-brief-sec--gray nfd-case-listsec">
@@ -314,8 +314,8 @@ LIST_DETAIL_CSS = """<style>
   font-weight:600;text-decoration:none;margin-bottom:22px!important;}
 .nfd-case-back:hover{color:#fff;}
 
-/* 히어로 제거된 목록 섹션 — 상단 여백 축소(임베드 친화) */
-.nfd-case-listsec{padding:44px 0 70px!important;}
+/* 히어로 제거된 목록 섹션 — 상단 여백 축소 + 배경색 없음(투명, 임베드 친화) */
+.nfd-case-listsec{padding:44px 0 70px!important;background:transparent!important;}
 
 /* 검색 */
 .nfd-case-search{position:relative;max-width:640px;margin:0 auto 14px!important;}
