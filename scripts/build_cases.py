@@ -72,23 +72,29 @@ document.querySelectorAll('.nfd-brief-copy-btn').forEach(function(btn){
   });
 });
 
-/* iframe 임베딩 시 부모창에 콘텐츠 높이 전달(모바일 높이 자동조절) */
+/* iframe 임베딩 시 부모창에 콘텐츠 높이 전달(높이 자동조절) */
 (function(){
   if(window.parent === window) return;            // iframe 안일 때만
+  var wrap = document.querySelector('.nfd-brief');
   var last = 0;
+  function measure(){
+    // 콘텐츠 래퍼의 실제 높이만 측정 — documentElement.scrollHeight 는 iframe 높이를
+    // 따라 커져서 무한증가(runaway)를 유발하므로 절대 쓰지 않는다.
+    if(wrap) return Math.ceil(wrap.getBoundingClientRect().height);
+    return document.body ? document.body.scrollHeight : 0;
+  }
   function postHeight(){
-    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight,
-                     document.body.offsetHeight, document.documentElement.offsetHeight);
-    if(Math.abs(h - last) < 4) return;            // 미세 변동 무시
+    var h = measure();
+    if(h <= 0 || Math.abs(h - last) < 2) return;  // 미세 변동/무효 무시
     last = h;
     try{ window.parent.postMessage({type:'uclass-cases-height', height:h}, '*'); }catch(e){}
   }
   window.addEventListener('load', postHeight);
   window.addEventListener('resize', postHeight);
-  if('ResizeObserver' in window){ new ResizeObserver(postHeight).observe(document.body); }
-  // 검색/페이징/네비게이션 후 반영 보강
+  // 콘텐츠 래퍼만 관찰(=내용 변화에만 반응, iframe 높이 변화엔 반응 안 함 → 루프 방지)
+  if('ResizeObserver' in window && wrap){ new ResizeObserver(postHeight).observe(wrap); }
   document.addEventListener('click', function(){ setTimeout(postHeight, 60); });
-  [120, 400, 1000].forEach(function(t){ setTimeout(postHeight, t); });
+  [120, 400, 1000, 2000].forEach(function(t){ setTimeout(postHeight, t); });
 })();
 </script>
 """
