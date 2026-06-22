@@ -301,8 +301,8 @@ LIST_DETAIL_CSS = """<style>
 .nfd-case-hero-badge{display:inline-block;background:#eef2ff!important;color:#0025B4!important;font-size:14px;font-weight:700;
   padding:8px 16px!important;border-radius:50px;margin-bottom:20px!important;}
 
-/* 히어로 제거된 목록 섹션 — 상단 여백 축소 + 배경색 없음(투명, 임베드 친화) */
-.nfd-case-listsec{padding:44px 0 70px!important;background:transparent!important;}
+/* 히어로 제거된 목록 섹션 — 여백 축소 + 배경색 없음(투명, 임베드 친화) */
+.nfd-case-listsec{padding:32px 0 28px!important;background:transparent!important;}
 
 /* 검색 */
 .nfd-case-search{position:relative;max-width:640px;margin:0 auto 14px!important;}
@@ -344,7 +344,7 @@ LIST_DETAIL_CSS = """<style>
 .nfd-case-empty{text-align:center;color:#8a93a6;font-size:16px;font-weight:500;padding:60px 0!important;}
 
 /* 페이저 */
-.nfd-case-pager{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:48px!important;flex-wrap:wrap;}
+.nfd-case-pager{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:30px!important;flex-wrap:wrap;}
 .nfd-case-page-btn{min-width:42px;height:42px;padding:0 12px!important;border:1px solid #e3e7ef;background:#fff;border-radius:12px;
   font-family:inherit;font-size:15px;font-weight:600;color:#3a4358;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
   transition:all .15s ease;}
