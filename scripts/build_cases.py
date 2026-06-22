@@ -126,7 +126,7 @@ def build_detail(case, prev_vol, next_vol):
 {LIST_DETAIL_CSS}
 </head>
 <body style="margin:0;padding:0;background:#fff;">
-<div class="nfd-brief">
+<div class="nfd-brief nfd-case-detail">
 
   <section class="nfd-brief-hero nfd-case-hero">
     <div class="nfd-brief-hero-video-wrap"></div>
@@ -353,6 +353,10 @@ LIST_DETAIL_CSS = """<style>
 .nfd-case-page-arrow{color:#3a4358;}
 .nfd-case-page-btn:disabled{opacity:.35;cursor:not-allowed;}
 .nfd-case-page-dots{color:#aab2c2;padding:0 2px!important;font-weight:600;}
+
+/* 상세 페이지 하단 여백 축소 — 콘텐츠에 딱 맞게 */
+.nfd-case-detail #section-news{padding-bottom:22px!important;}
+.nfd-case-detail .nfd-case-pn-bar{padding:22px 24px 26px!important;margin-top:0!important;}
 
 /* 상세 이전/다음 바 */
 .nfd-case-pn-bar{max-width:920px;margin:10px auto 0!important;padding:40px 24px 10px!important;display:flex;align-items:stretch;justify-content:space-between;gap:14px;}
