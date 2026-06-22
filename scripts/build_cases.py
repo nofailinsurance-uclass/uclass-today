@@ -132,10 +132,6 @@ def build_detail(case, prev_vol, next_vol):
     <div class="nfd-brief-hero-video-wrap"></div>
     <div class="nfd-brief-hero-container">
       <div class="nfd-brief-hero-content">
-        <a href="/cases/" class="nfd-case-back nfd-brief-anim-text">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          보상사례 목록
-        </a>
         <span class="nfd-case-hero-badge nfd-brief-anim-text">⚖️ 보상사례 Vol.{vol}</span>
         <h1 class="nfd-brief-hero-heading nfd-brief-anim-text nfd-case-hero-title">{esc(case['title'])}</h1>
         <p class="nfd-brief-hero-desc nfd-brief-anim-text">{full} · 유클래스랩</p>
@@ -150,12 +146,6 @@ def build_detail(case, prev_vol, next_vol):
     <a class="nfd-case-pn nfd-case-pn--list" href="/cases/">목록</a>
     {next_link}
   </nav>
-
-  <section class="nfd-brief-bottom">
-    <div class="nfd-brief-bottom-container">
-      <a href="https://uclasslab.com/uclasstoday" class="nfd-brief-cta-btn">유클래스 투데이 더보기</a>
-    </div>
-  </section>
 
 </div>
 {COMMON_JS}
@@ -220,12 +210,6 @@ def build_list(cases):
 
       <div class="nfd-case-pager" id="casePager"></div>
 
-    </div>
-  </section>
-
-  <section class="nfd-brief-bottom">
-    <div class="nfd-brief-bottom-container">
-      <a href="https://uclasslab.com/uclasstoday" class="nfd-brief-cta-btn">유클래스 투데이 더보기</a>
     </div>
   </section>
 
@@ -306,13 +290,16 @@ def build_list(cases):
 # 주의: nfd-brief.css 전역 리셋이 `.nfd-brief * { margin:0!important; padding:0!important }` 이므로
 #       카드/검색/페이저의 모든 padding·margin 은 반드시 !important 로 지정해야 적용된다.
 LIST_DETAIL_CSS = """<style>
-.nfd-case-hero .nfd-brief-hero-container{padding:90px 40px 80px!important;}
-.nfd-case-hero-title{font-size:42px!important;}
-.nfd-case-hero-badge{display:inline-block;background:rgba(255,255,255,.16);color:#fff;font-size:15px;font-weight:600;
-  padding:9px 18px!important;border-radius:50px;margin-bottom:24px!important;backdrop-filter:blur(4px);}
-.nfd-case-back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.85);font-size:15px;
-  font-weight:600;text-decoration:none;margin-bottom:22px!important;}
-.nfd-case-back:hover{color:#fff;}
+/* 상세 히어로 — 흰색 배경 + 어두운 폰트 */
+.nfd-case-hero .nfd-brief-hero-video-wrap{background:#fff!important;border-radius:0!important;}
+.nfd-case-hero .nfd-brief-hero-video-wrap::after{display:none!important;}
+.nfd-case-hero{border-bottom:1px solid #eef0f5!important;}
+.nfd-case-hero .nfd-brief-hero-container{padding:56px 40px 40px!important;}
+.nfd-case-hero .nfd-brief-hero-heading{color:#0f1830!important;}
+.nfd-case-hero .nfd-brief-hero-desc{color:#7b8496!important;}
+.nfd-case-hero-title{font-size:38px!important;}
+.nfd-case-hero-badge{display:inline-block;background:#eef2ff!important;color:#0025B4!important;font-size:14px;font-weight:700;
+  padding:8px 16px!important;border-radius:50px;margin-bottom:20px!important;}
 
 /* 히어로 제거된 목록 섹션 — 상단 여백 축소 + 배경색 없음(투명, 임베드 친화) */
 .nfd-case-listsec{padding:44px 0 70px!important;background:transparent!important;}
